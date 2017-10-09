@@ -35,7 +35,7 @@
           rows="4"
           placeholder=""></textarea><br><br>
           
-<div class="wzs21_label_form">What should’ve we asked you?</div>
+<div class="wzs21_label_form">Was this process more convenient for you? Why?</div>
 <textarea name="rec7" id="rec7" 
           class="wzs21_input_form" type="text"
           rows="4"
