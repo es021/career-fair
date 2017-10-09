@@ -6,9 +6,13 @@ function MainPreScreenJS() {
     btn_export.click(function (e) {
         e.preventDefault();
         var header = [];
+        //header.push("#");
         header.push("Student");
-        header.push("Links");
-        header.push("Pre Screen Status");
+        header.push("Resume");
+        header.push("LinkedIn");
+        header.push("Portfolio");
+        header.push("Type");
+        header.push("Status");
         header.push("Appointment Time");
         header.push("Registered At");
         header.push("Updated At");
@@ -182,36 +186,47 @@ function MainPreScreenJS() {
                 new_col.append(clone_edit);
                 new_row.append(new_col);
             }
+        } else { //index for export
+            //new_row.append(generateColumn(Number(index) + 1 + ""));
         }
 
 
         //student info
+        var student_link = SiteUrl + "/student/?id=" + data["student_id"];
         var student = generateLink(data["first_name"] + " " + data["last_name"]
-                , SiteUrl + "/student/?id=" + data["student_id"]
+                , student_link
                 , "blue_link limit_line", "_blank");
+
         new_row.append(generateColumn(student));
 
         //generate links
         var resume = (data["resume"] !== "" && data["resume"] !== null) ? generateLink("Resume"
                 , data["resume"]
-                , "small_link", "_blank") + "<br>"
+                , "small_link", "_blank")
                 : "";
         var linkedin = (data["linkedin"] !== "" && data["linkedin"] !== null) ? generateLink("LinkedIn"
                 , data["linkedin"]
-                , "small_link", "_blank") + "<br>"
+                , "small_link", "_blank")
                 : "";
         var porfolio = (data["portfolio"] !== "" && data["portfolio"] !== null) ? generateLink("Portfolio"
                 , data["portfolio"]
                 , "small_link", "_blank")
                 : "";
-        new_row.append(generateColumn(resume + linkedin + porfolio));
+
+        if (!is_export) {
+            new_row.append(generateColumn(resume + "<br>" + linkedin + "<br>" + porfolio));
+        } else {
+            new_row.append(generateColumn(resume));
+            new_row.append(generateColumn(linkedin));
+            new_row.append(generateColumn(porfolio));
+        }
 
         //other column
         var type = data[PreScreen.COL_SPECIAL_TYPE];
         if (type == null || type == "") {
             type = "Pre-Screen";
         }
-        
+
         new_row.append(generateColumn(type));
         new_row.append(generateColumn(data[PreScreen.COL_STATUS]));
         new_row.append(generateColumn(timeGetString(data[PreScreen.COL_APPNTMNT_TIME], true)));

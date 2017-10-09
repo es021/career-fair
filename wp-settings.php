@@ -470,4 +470,4 @@ if ( is_multisite() ) {
 do_action( 'wp_loaded' ); 
 
 define('CUSTOM_CSS_VERSION','addnexts');
-define('CUSTOM_JS_VERSION','addnexts');
+define('CUSTOM_JS_VERSION','export');

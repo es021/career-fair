@@ -333,6 +333,11 @@ SearchPanel.prototype.mainSearch_success = function (response, search_param, pag
         tab_text += result;
 
         tab_text += "</table>";
+
+        //line break in excel
+        var excelLineBreak = "<br style='mso-data-placement:same-cell;'/>";
+        tab_text = replaceAll(tab_text, "<br>", excelLineBreak);
+
         this.tableTextToExcel(this.export_file_name, tab_text);
         this.finishSearch();
         //console.log(tab_text);
@@ -373,7 +378,6 @@ SearchPanel.prototype.tableTextToExcel = function (filename, tab_text)
     excelFile += "</html>";
 
     tab_text = encodeURIComponent(excelFile);
-
 
     var a = document.createElement('a');
     var uri = 'data:application/vnd.ms-excel,';

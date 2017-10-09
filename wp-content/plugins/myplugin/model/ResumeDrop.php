@@ -35,7 +35,7 @@ class ResumeDrop {
 
         $order_by = array(self::COL_UPDATED_AT . " DESC");
 
-        if (!$is_export) {
+        if (!$is_export && !$count) {
             $limit = QueryPrepare::get_limit_query($page, $offset);
         } else {
             $limit = "";
@@ -73,7 +73,7 @@ class ResumeDrop {
 
         $order_by = array(self::COL_UPDATED_AT . " DESC");
 
-        if (!$is_export) {
+        if (!$is_export && !$count) {
             $limit = QueryPrepare::get_limit_query($page, $offset);
         } else {
             $limit = "";
