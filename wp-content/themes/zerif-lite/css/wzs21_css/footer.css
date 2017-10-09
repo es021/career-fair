@@ -1,0 +1,40 @@
+
+/** PLACEHOLEDER **/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #33b3db !important;
+    font-style: italic !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #33b3db !important;
+    font-style: italic !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #33b3db !important;
+    font-style: italic !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #33b3db !important;    
+    font-style: italic !important;
+}
+
+/* Footer */
+.wzs21_footer .footer_logo_client{
+    padding-top:10px;  
+}
+
+@media only screen and (max-width:1024px){
+
+    .wzs21_footer .footer_logo_client{
+        padding-top:0;  
+    }  
+}
+
+@media only screen and (max-width:767px){
+
+    .wzs21_footer .footer_logo_client{
+        padding-bottom:35px;  
+    }  
+}
+
+
+/*ToolTip*/

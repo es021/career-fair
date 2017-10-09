@@ -1,0 +1,718 @@
+/**********************************/
+/** Listing Card ******************/
+
+#card_title{
+    margin-bottom: 30px;
+    font-weight:bold;
+}
+
+/*** Ribbon START ***/
+#myp_topright_ribbon{
+    position:absolute;
+    top:-5px;
+    right:-7px;
+}
+
+
+#myp_topright_ribbon #ribbon_border {
+    height: 0px;
+    width: 10px;
+    float:left;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid #4CAF50; /*green*/ 
+    border-top: 15px solid #4CAF50; /*green*/ 
+}
+
+#myp_topright_ribbon #ribbon_box{
+
+    height:30px;
+    background-color: #4CAF50; /*green*/   
+    float:left;
+}
+
+#myp_topright_ribbon #ribbon_content{
+    float:left;
+    padding-top: 5px;
+    margin-right:5px;
+    padding-left:15px;
+    padding-right:5px;
+    color: white;
+}
+
+#myp_topright_ribbon #ribbon_content .text{
+    color: white;
+    letter-spacing: 0;
+    font-size: 80%;
+    text-transform: capitalize;
+
+    /*    -webkit-transition:  letter-spacing 0.5s;*/
+}
+
+/************************/
+
+#myp_topleft_ribbon{
+    position:absolute;
+    top: -5px;
+    left: 5px;
+}
+
+
+#myp_topleft_ribbon #ribbon_border {
+    height: 0px;
+    width: 10px;
+    /* float: right; */
+    border-left: 25px solid #4CAF50;
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid #4CAF50;
+}
+
+#myp_topleft_ribbon #ribbon_box{
+    width: 50px;
+    line-height: 11px;
+    background-color: #4CAF50; /*green*/   
+}
+
+#myp_topleft_ribbon #ribbon_content{
+    padding: 3px 5px;
+    font-size: 90%;
+    color: white;
+
+}
+
+#myp_topleft_ribbon #ribbon_content .text{
+    color: white;
+    letter-spacing: 0;
+    font-size: 80%;
+    text-transform: capitalize;
+    /*    -webkit-transition:  letter-spacing 0.5s;*/
+}
+
+/*#myp_topright_ribbon #ribbon_content a:hover{
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    -webkit-transition:  letter-spacing 0.5s;
+}*/
+/*** Ribbon END ***/
+
+/*********************************/
+/****** PROFILE CARD *************/
+
+.card{
+    min-height: 185px;
+    position: relative;
+    background-color: white;
+    /*font-family: palanquin-regular;*/
+    /*    box-shadow: 5px 5px 15px grey, 0 5px 20px 0 gainsboro;*/
+}
+
+@media only screen and (max-width: 767px) {
+    .card{
+        /*         margin-bottom: 35px; */
+    }
+
+    #recruiter_card{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+}
+
+
+#myp_user_image{
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-repeat: no-repeat;
+
+    background-position: center center;
+    background-size: cover;
+}
+
+#myp_user_image_card{
+    width: 200px;
+    height: 100px;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+#myp_user_name{
+    line-height: 80%;
+    margin-bottom: 10px;
+}
+
+#myp_user_desc{
+    line-height: 95%;
+}
+
+/** wzs21 card **/
+.wzs21_card{
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.wzs21_card .wzs21_card_image{
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(#004092, #020202, transparent); 
+    position: relative;
+    background-position: top center;
+    background-size: cover;
+
+}
+
+.wzs21_card_content{
+    padding: 10px ;
+    position:relative;
+}
+
+.wzs21_top_corner_right{
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.wzs21_top_corner_left{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.wzs21_bottom_corner_left{
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+.wzs21_bottom_corner_right{
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+/** Custom File Input Button **/
+.corner_btn {
+    position: relative;
+    overflow: hidden;
+    color: #020202;
+    border: gainsboro dotted 1px;
+    padding: 0 4px;
+    cursor: pointer;
+}
+
+.corner_btn:hover,
+.corner_btn input:hover
+{
+    color: gainsboro;
+}
+
+.corner_btn input {
+    position: absolute;
+    top: 0;
+    right: 0; /* not left, because only the right part of the input seems to
+                 be clickable in some browser I can't remember */
+    cursor: pointer;
+    opacity: 0.0;
+    filter: alpha(opacity=0); /* and all the other old opacity stuff you
+                                 want to support */
+    /* wtf, but apparently the most reliable way to make
+                         a large part of the input clickable in most browsers */
+
+}
+
+/*******************************************/
+.myp_card {
+
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    /*    border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;*/
+    margin-bottom: 15px;
+}
+
+.myp_card_block {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    min-height: 185px;
+    padding-bottom: 0;
+}
+
+.rec_card{
+    text-align:left;
+}
+
+@media only screen and (max-width:767px){
+
+    .myp_card{
+        text-align:center;
+    }
+
+    .myp_card_block {
+        padding: 15px 0 0 0;
+    }
+
+    .myp_card_block .myp_image_section{
+        margin-bottom: 15px;
+    }
+}
+
+.myp_card_button{
+    position: absolute; 
+    right: -5px; 
+    top:35px;
+}
+
+.myp_corner_card_button{
+    position: absolute; 
+    right: -5px; 
+    top:-4px;
+}
+
+#myp_card_content {
+    display: block;
+    display: -webkit-box;
+    font-size: 80%;
+    line-height: 1.2em;
+    text-align: justify;
+    padding-right: 10px;
+    padding-top: 10px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.limit_line,
+.limit_line_1,
+.limit_line_2{
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    font-size: inherit;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.limit_line_1{
+    -webkit-line-clamp: 1;
+}
+
+.limit_line_2{
+    -webkit-line-clamp: 2;
+}
+
+.limit_line_1:hover,
+.limit_line_2:hover{
+    -webkit-line-clamp: 10;
+}
+
+.limit_line:hover{
+    display: inline;
+}
+
+#myp_card_title a{
+    font-size: 20px;
+}
+
+#myp_card_subtitle {
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+/************ Edit CARD PROFILE ************/
+
+.wzs21_edit_profile_form{
+    padding: 0 10px;
+}
+
+.wzs21_edit_profile_form .wzs21_input_form{
+    width: 100%;
+    position: relative;
+    border: gainsboro 1px solid;  
+    border-radius: 0;
+    height: 70%;
+    font-size: 85%;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    line-height: 1.3em;
+    resize: none;
+
+}
+
+.wzs21_edit_profile_form .wzs21_label_form{
+    font-size: 75%;
+    color: steelblue;
+    font-style: oblique;
+    margin-bottom: -3px;
+}
+
+
+.wzs21_subtitle_form{
+    font-weight: bold;
+    border-bottom: solid 1px black;
+    margin-bottom: 10px;
+}
+
+.wzs21_label_btn{
+    text-decoration: underline;
+    font-style: normal !important;
+    opacity: 0.7;
+}
+
+.wzs21_label_btn:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+
+.wzs21_error_form{
+    background-color: #fcbaba;
+    color: crimson;
+    width: 95%;
+    padding: 10px;
+    border: crimson solid 1px;
+    line-height: 1.3em;
+    display: inline-block;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+
+.wzs21_error_form_text{
+    color: crimson;
+    line-height: 1.3em;
+    text-align: left;
+    margin-top: -5px;
+    font-size: 85%;
+    margin-right: 5px;
+}
+
+#mobile_message_upload{
+    font-size: 10px;
+    line-height: 1em;
+    padding: 5px;
+    width: 100%;
+    position: absolute;
+    bottom : 5px;
+}
+
+.wzs21_edit_profile_form .wzs21_message_form{
+    font-size: 75%;
+    color: grey;
+    padding-left: 5px;
+    margin-top: -5px;
+}
+
+.wzs21_tag_item{
+    float: left;
+    margin-right: 5px;
+    background-color: skyblue;
+}
+
+.wzs21_tag_input{
+    background-color: white;
+    border: 1px cadetblue dotted;
+}
+
+#display_header{
+    position: relative;
+    height: 200px;
+}
+
+#display_content{
+    position: relative;
+}
+
+#display_content #content_text{
+    padding: 0 15px;
+    text-align : center;
+}
+
+#display_content #content_text .title{
+    margin-top: -25px;
+}
+
+#display_content #content_text .subtitle{
+    margin-top: -10px;
+    margin-bottom: 20px;
+    color : grey;
+}
+
+#display_content #content_text p{
+    /*    word-break: break-all;     */
+    font-size: 80%;
+    line-height: 1.5em;
+    text-align: justify;
+}
+
+/* card image banner */
+#display_header #header_banner,
+#display_content #footer_banner{
+    height: 100px;
+    position: relative;
+    /*    background: url("http://seedsjobfair.com/image/river.jpg");*/
+    /*    background: #8dc549;*/
+    background-position: top center;
+    background-size: cover;
+}
+
+#display_content #footer_banner{
+    height: 10px;
+    background: none;
+}
+
+#display_header #header_banner:before, 
+#display_content #footer_banner:before{
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    opacity: 1;
+}
+/*
+#display_header #header_banner:before{
+    top: 30%;
+    bottom: 0;
+    background-image: linear-gradient(to top, white, transparent);
+}
+
+#display_content #footer_banner:before{
+    top: 0;
+    bottom: -10%;
+    background-image: linear-gradient(to bottom, white, transparent);
+}
+*/
+
+
+.profile_picture{
+    height: 140px;
+    width: 140px;
+    border-radius: 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top: -70px;
+    margin-left: -70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index : 0;
+    box-shadow: 1px 5px 15px darkgrey;
+    /*    border : #8dc549 solid 4px;*/
+}
+
+#display_header .image{
+    height: 140px;
+    width: 140px;
+    border-radius: 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top: -70px;
+    margin-left: -70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index : 0;
+    box-shadow: 1px 5px 15px darkgrey;
+    /*    border : #8dc549 solid 4px;*/
+}
+
+#display_header .image_full{
+    height: 140px;
+    width: 140px;
+    position: absolute;
+    opacity: 0.5;
+    top:50%;
+    left:50%;
+    margin-top: -70px;
+    margin-left: -70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index : 0;
+}
+
+ul.myp_list{
+    list-style: none;
+    padding: 0;
+    margin: 0; 
+}
+
+#display_content ul.list li{
+    margin-bottom: 2px;
+}
+
+
+#display_content .list-inline-justify{
+    display: flex;
+    justify-content: space-between;  
+    margin-left:40px; 
+    margin-right:40px; 
+}
+
+#display_content .list-inline-justify li{
+    color : gray;
+}
+
+/* Listing Card */
+.btn_link:hover{
+    cursor:pointer;
+}
+
+ul#myp_job_list{
+    list-style: none;
+    margin-left: 0;
+}
+ul#myp_job_list li span.vacancy{
+    font-size: 80%;
+    line-height: 1.3em;
+}
+
+/* company card */
+.company_card{
+    min-height: 143px;
+}
+
+.company_card .myp_image_circle{
+    width: 80px;
+    height: 80px;
+    background-color: white;
+}
+
+/**************************************/
+/* company grid special template ******/
+
+/* GOLD ******/
+.gold #myp_topleft_ribbon #ribbon_border{
+    border-left: 25px solid #ddb30b;
+    border-right: 25px solid #ddb30b;
+}
+
+.gold #myp_topleft_ribbon #ribbon_box{
+    background-color: #ddb30b;  
+}
+
+.gold #myp_topleft_ribbon #ribbon_content .text{
+    color: white;
+}
+
+.gold .company_card{
+    background: #FFE57C;
+    border: 1px solid #ddb30b;
+}
+
+.gold .company_card #myp_card_title a{
+    color:#ddb30b;
+}
+
+.silver .company_card #myp_card_title a{
+    color:lightslategrey;
+}
+
+.bronze .company_card #myp_card_title a{
+    color: #d6945e;
+}
+
+/* SILVER ******/
+.silver #myp_topleft_ribbon #ribbon_border{
+    border-left: 25px solid lightslategrey;
+    border-right: 25px solid lightslategrey;
+}
+
+.silver #myp_topleft_ribbon #ribbon_box{
+    background-color: lightslategrey;  
+}
+
+.silver #myp_topleft_ribbon #ribbon_content .text{
+    color: white;
+}
+
+.silver .company_card{
+    background: #D6D7DB;
+    border: 1px solid lightslategrey;
+}
+
+
+/* BRONZE ******/
+.bronze #myp_topleft_ribbon #ribbon_border{
+    border-left: 25px solid #d6945e;
+    border-right: 25px solid #d6945e;
+}
+
+.bronze #myp_topleft_ribbon #ribbon_box{
+    background-color: #d6945e;  
+}
+
+.bronze #myp_topleft_ribbon #ribbon_content .text{
+    color: white;
+}
+
+.bronze .company_card{
+    background:  #ffe0c6;
+    border: 1px solid #d6945e;
+}
+
+
+/***** Add New Card ******/
+.card_add_new{
+    cursor: pointer;
+    border: green dotted 1px !important;
+    color : green;
+}
+
+.card_add_new:hover{
+    color: limegreen;
+    border-color: limegreen;
+}
+
+/***** Company Grid ******/
+.company_grid{
+    padding: 7px 5px !important;
+    position: relative;
+}
+
+.company_grid:hover{
+    z-index: 10;
+}
+
+
+.company_grid .company_card{
+    padding: 15px 5px;
+    height: 340px;
+}
+
+
+.company_grid .grid_footer{
+    position: absolute;
+    bottom:15px;
+    left: 0;
+    width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    .company_grid .company_card{
+        height: auto;
+    }
+
+    .company_grid .grid_footer{
+        position: relative;
+    }
+}

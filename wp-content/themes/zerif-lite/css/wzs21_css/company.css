@@ -1,0 +1,63 @@
+
+.inner_card{
+    border:gainsboro solid 1px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.inner_card .inner_card_content{
+    padding: 15px;
+}
+
+@media (max-width:767px){
+    .company_page .company_detail{
+        display: none;
+    }
+
+    .company_page #nav_info{
+        display: initial;
+    }
+}
+
+@media (min-width:767px){
+    .company_page #nav_info{
+        display: none;
+    }
+}
+
+.company_page .top_nav .nav_item{
+    display: inline-block;
+    padding: 5px 15px 10px 15px;
+    border-top-left-radius: 15px;
+    margin-right: 10px;
+    border : white 1px solid;
+    color:darkgray;
+}
+
+.company_page .top_nav .nav_item.active,
+.company_page .top_nav .nav_item:hover{
+    background: white;
+    color:black;
+    cursor: pointer;
+}
+
+.company_page .card_content{
+    min-height: 300px;
+}
+
+.company_page .image_banner{
+    background : white;
+    height:100px;
+    width:100%;
+    background-position: center center;
+    opacity: 0.4;
+}
+.company_page .image_primary{
+    background : white;
+    background-position: center center;
+}
+
+.company_page .title{
+    font-size: 25px;
+    font-weight: bold;
+}

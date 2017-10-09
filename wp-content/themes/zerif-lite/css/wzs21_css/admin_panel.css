@@ -1,0 +1,29 @@
+  
+.card_content{
+    padding: 1.25em;
+}
+
+.no_padding{
+    padding: 0 !important;
+}
+
+.admin_panel_side_bar ul{
+    list-style: none;
+    margin-left: 0;
+}
+
+.admin_panel_side_bar ul li{
+    padding: 5px 10px;
+    color:darkgray;
+    font-size: 12px;
+}
+
+.admin_panel_side_bar ul li:hover{
+    cursor: pointer;
+}
+
+.admin_panel_side_bar ul li.active,
+.admin_panel_side_bar ul li:hover{
+    background: white;
+    color:black;
+}

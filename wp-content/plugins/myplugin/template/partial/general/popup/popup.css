@@ -1,0 +1,82 @@
+
+/*********************************/
+/* POPUP *************************/
+.popup_parent .popup_backgroud{
+    position: fixed;
+    z-index: 99999998;
+    background-color: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.popup_parent .popup{
+    border-radius: 10px;
+    position: fixed;
+    z-index: 99999999;
+    background-color: white;
+    left: 50%;
+
+    width: 400px;
+    margin-left: -200px;
+}
+
+@media only screen and (max-width:400px){
+    .popup_parent .popup{
+        width: 260px;
+        margin-left: -130px;
+    }
+}
+
+/* POPUP HEADER *******/
+.popup .popup_header{
+    border-radius: 10px 10px 0px 0px;
+    background-color: #0084ff;
+    color: white;
+    padding: 10px;
+}
+
+#popup_notification .popup .popup_header{
+    background-color: #5cb85c;
+}
+
+.popup_header_error{
+    background-color: #d80a0a !important;
+}
+
+.popup_header .title{
+    font-size: 18px;
+    margin: 10px;
+}
+
+.popup_header .btn_close{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+/* POPUP BODY *******/
+.popup .popup_body{
+    min-height: 60px;
+    border-radius:0px 0px 10px 10px;
+    padding: 0 10px;
+}
+
+.popup_body .btn_yes{
+    background-color: #0084ff;
+}
+
+
+.popup_body .btn_no{
+    background-color: white;
+    color: #0084ff !important;
+    border: solid 1px #0084ff;
+}
+
+.popup_body .content p{
+    padding:10px; 
+    text-align:center !important;
+}

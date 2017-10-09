@@ -1,0 +1,73 @@
+#support,
+#support .open{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: #5cb85c;
+    cursor: pointer;
+}
+
+#support{
+    height: 55px;
+    width: 55px;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.5);
+    z-index: 10000;
+    right: 10px;
+    bottom: 10px; 
+    position: fixed;
+
+}
+
+#support .open{
+    height: 30px;
+    width: 30px;
+    font-weight: bold;
+    color: white;
+    border: white 2px solid;
+}
+
+
+#support:active .open{
+    background: #5C9B56;
+}
+
+#support .open .hover{
+    font-size: 95%;
+    line-height: 15px;
+    display: none;
+}
+
+
+#support .open .non_hover{
+    display: initial;
+}
+
+
+#support:hover,
+#support:hover .open{
+    border-radius: 35px;
+}
+
+#support:hover{
+    width: 150px;
+}
+
+
+#support:hover .open .non_hover{
+    display: none;
+
+}
+
+#support:hover .open .hover{
+    display: initial;
+
+}
+
+
+#support:hover .open{
+    width: 150px;
+    height: 55px;
+    border: none; 
+}
+

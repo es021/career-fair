@@ -1,0 +1,57 @@
+.modal-body #display_header button{
+    position: absolute;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    left: 50%;
+    color: gray !important;
+    background: white;
+}
+
+.btn_close_modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 50%;
+    padding: 3px 5px !important;
+}
+
+.modal-body #display_header button#pos_up{
+    margin-top: -95px;
+    margin-left: -15px;
+}
+
+.modal-body #display_header button#pos_down{
+    margin-top: 65px;
+    margin-left: -15px;
+}
+
+.modal-body #display_header button#pos_left{
+    margin-top: -15px;
+    margin-left: -95px;
+}
+
+.modal-body #display_header button#pos_right{
+    margin-top: -15px;
+    margin-left: 65px;
+}
+
+.modal-body #display_header button#zoom_in{
+    margin-top: -85px;
+    margin-left: 55px;
+}
+
+.modal-body #display_header button#zoom_out{
+    margin-top: 55px;
+    margin-left: -85px;
+}
+
+.modal-body .modal_btn_action button{
+    min-width: 100px;
+}
+
+.modal-body{
+    max-height: 400px;
+    overflow-y: auto;
+}

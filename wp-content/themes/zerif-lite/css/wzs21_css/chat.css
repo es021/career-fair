@@ -1,0 +1,95 @@
+/******************************************/
+/** Chat Box ******************************/
+
+.wzs21_chat_ui_chatbox{
+    margin-bottom: 30px;
+}
+
+.wzs21_chat_ui_chatbox #chat_log{
+    border: solid #0084ff 1px;
+    height: 400px;
+    padding-bottom: 10px;
+    background-color: #eaedf3;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 767px) {
+    .wzs21_chat_ui_chatbox #chat_log{
+        height: 300px;
+    }
+}
+
+.wzs21_chat_ui_chatbox #chat_log div.message_self{
+    /*    text-align: right;
+        height: auto;
+        width: auto;
+        padding-left: 40%;
+        background-color: #e3e7ec;
+        padding-right: 2%;*/
+
+    text-align: left;
+    height: auto;
+    width: auto;
+    background-color: #0084ff;
+    color:white;
+
+    border-radius: 10px;
+    margin-left: 40%;
+    margin-right: 2%;
+}
+
+.wzs21_chat_ui_chatbox #chat_log .message{
+    margin-top: 10px;
+    padding: 4px 10px;
+}
+
+.wzs21_chat_ui_chatbox #chat_log div.message_other{
+    /*    text-align: left;
+        padding-right: 40%;
+        padding-left: 2%;
+        background-color: white;*/
+
+    text-align: left;
+    height: auto;
+    width: auto;
+    background-color: white;
+
+    border-radius: 10px;
+    margin-right: 40%;
+    margin-left: 2%;
+}
+
+.wzs21_chat_ui_chatbox div#chat_input{
+    width: auto;
+    position: relative;
+    height: 50px;
+    border: #0084ff 1px solid;
+    border-top: none;
+}
+
+.wzs21_chat_ui_chatbox textarea#chat_input{
+    width: 80%;
+    resize: none;
+    position: absolute;
+    outline: none;
+    padding: 10px;
+    border: none;
+    margin: 0;
+    height: 100%;
+    font-size: 75%;
+}
+
+.wzs21_chat_ui_chatbox textarea#chat_input:focus{
+    border: none !important;
+}
+
+
+.wzs21_chat_ui_chatbox div#chat_input button#btn_send{    
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    right: 0;
+    top: 0;
+}
