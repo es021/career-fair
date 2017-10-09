@@ -7,6 +7,8 @@ function toHTTPS($link) {
     if (strpos($link, "http") > -1 && strpos($link, "https") <= -1) {
         return str_replace("http", "https", $link);
     }
+    
+    return $link;
 }
 
 function generate_ribbon($content) {

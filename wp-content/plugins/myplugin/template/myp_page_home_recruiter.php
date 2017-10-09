@@ -22,7 +22,7 @@ foreach (json_decode(SiteInfo::USERMETA_REC_KEYS) as $key) {
             $user[$key] = View::generateNotSpecified("Company");
         }
         if ($key == SiteInfo::USERMETA_IMAGE_URL) {
-            $user[$key] = site_url() . "/" . SiteInfo::IMAGE_USER_DEFAULT;
+            $user[$key] = site_url() . SiteInfo::IMAGE_USER_DEFAULT;
         }
         if ($key == SiteInfo::USERMETA_IMAGE_POSITION) {
             $user[$key] = SiteInfo::DEF_USERMETA_IMAGE_POSITION;
@@ -40,6 +40,7 @@ foreach (json_decode(SiteInfo::USERMETA_REC_KEYS) as $key) {
         }
     }
 }
+
 ?>
 
 <div  class="container-fluid no_padding" style="margin-bottom: 10px;">
@@ -72,7 +73,7 @@ foreach (json_decode(SiteInfo::USERMETA_REC_KEYS) as $key) {
                 <div class="col-sm-12 sm_no_padding">
                     <?php include_once MYP_PARTIAL_PATH . '/career-fair/home_info.php'; ?>
                 </div>
-                
+
                 <?php include_once MYP_PARTIAL_PATH . '/career-fair/main.php'; ?>
 
 

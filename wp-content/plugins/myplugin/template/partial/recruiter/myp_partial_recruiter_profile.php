@@ -11,14 +11,15 @@ include_once MYP_PARTIAL_PATH . "/recruiter/myp_partial_modal_edit_profile.php";
 
     $img_size = $user[SiteInfo::USERMETA_IMAGE_SIZE];
     $img_pos = $user[SiteInfo::USERMETA_IMAGE_POSITION];
-    include MYP_PARTIAL_PATH . "/general/myp_partial_image_modal.php"
+
+    include MYP_PARTIAL_PATH . "/general/myp_partial_image_modal.php";
     ?>
 
     <div class='myp_card_block' style="padding: 20px 10px;">
         <div class='row'>
             <div class='myp_image_section' style="position: relative; height: 140px">
                 <div id="profile_picture" class="image profile_picture"
-                     style="background-image: url(<?= $img_url ?>);
+                     style="background-image: url('<?= $img_url ?>');
                      background-size: <?= $user[SiteInfo::USERMETA_IMAGE_SIZE] ?>;
                      background-position: <?= $user[SiteInfo::USERMETA_IMAGE_POSITION] ?>;
                      background-repeat: no-repeat;

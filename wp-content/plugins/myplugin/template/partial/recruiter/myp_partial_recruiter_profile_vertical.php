@@ -15,7 +15,6 @@ if (!isset($user[SiteInfo::USERMETA_IMAGE_URL]) ||
         $user[SiteInfo::USERMETA_IMAGE_URL] == '') {
     $user[SiteInfo::USERMETA_IMAGE_URL] = SiteInfo::DEF_USERMETA_IMAGE_URL;
 }
-
 $user[SiteInfo::USERMETA_IMAGE_URL] = toHTTPS($user[SiteInfo::USERMETA_IMAGE_URL]);
 
 if (!isset($user[SiteInfo::USERMETA_IMAGE_POSITION]) ||
