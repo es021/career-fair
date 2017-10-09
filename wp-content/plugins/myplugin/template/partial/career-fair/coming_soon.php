@@ -9,11 +9,14 @@
 
         <div class="row">
             <div class="col-sm-12">
+                <h3 class="dark-text"><small>Platinum Sponsor</small></h3>
+                <?= generateFixImage(site_url() . "/image/client/EM.png", 100, 130) ?>
+            </div>
+            <div class="col-sm-12">
                 <h3 class="dark-text"><small>Gold Sponsor</small></h3>
                 <?= generateFixImage(site_url() . "/image/company/exxon_1.png", 100, 130) ?>
                 <?= generateFixImage(site_url() . "/image/company/shell.png", 100, 130) ?><br>
                 <?= generateFixImage(site_url() . "/image/company/sapura.png", 100, 130) ?>
-                <?= generateFixImage(site_url() . "/image/client/EM.png", 100, 130) ?>
 
             </div>
             <div class="col-sm-12">
@@ -23,7 +26,7 @@
             <div class="col-sm-12">
                 <h3 class="dark-text"><small>Bronze Sponsor</small></h3>
                 <?= generateFixImage(site_url() . "/image/company/maybank.png", 90, 200) ?>
-                
+
                 <br><br>
             </div>
             <div class="col-sm-12">

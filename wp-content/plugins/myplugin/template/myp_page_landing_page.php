@@ -45,8 +45,8 @@
         </section>
     <?php else: ?>
 
-                    <!--        <section class="focus" id="focus">
-                            </section>-->
+                        <!--        <section class="focus" id="focus">
+                                </section>-->
 
         <style>
             .full_width{
@@ -59,11 +59,14 @@
         <div class="container-fluid">
             <div class="row full_width" style='background-color: whitesmoke;'>
                 <div class="col-sm-12">
+                    <h3 class="dark-text gold-text">Platinum Sponsor</h3>
+                    <?= generateFixImage(site_url() . "/image/client/EM.png", 200, 200) ?>
+                </div>
+                <div class="col-sm-12">
                     <h3 class="dark-text gold-text">Gold Sponsor</h3>
                     <?= generateFixImage(site_url() . "/image/company/exxon_1.png", 200, 200) ?>
                     <?= generateFixImage(site_url() . "/image/company/shell.png", 200, 200) ?>
                     <?= generateFixImage(site_url() . "/image/company/sapura.png", 200, 200) ?>
-                    <?= generateFixImage(site_url() . "/image/client/EM.png", 200, 200) ?>
                 </div>
                 <div class="col-sm-12">
                     <h3 class="dark-text gold-text">Silver Sponsor</h3>

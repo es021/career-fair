@@ -59,7 +59,7 @@ $preScreenExpired = true;
 
             <?php } else { ?>            
                 <button id="btn_submit_prescreen" disabled="disabled" type="button" class="btn btn-sm btn-primary">
-                    Registeration Closed
+                    Registration Closed
                 </button><br>
                 <small>
                     We are sorry to inform that the pre-screen registration for all the company has been closed.
