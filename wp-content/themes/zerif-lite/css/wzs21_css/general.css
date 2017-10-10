@@ -586,4 +586,38 @@ footer#footer {
     display: initial;
 }
 
+/******************************/
+/*countdown front page */
+
+#countdown{
+
+}
+
+#countdown.closer{
+    color:orange;
+}
+
+#countdown .number{
+    font-size: 35px;
+    padding-right: 3px;
+    padding-left: 10px;
+}
+#countdown .number:first-child{
+    padding-left: 0px;
+}
+
+#countdown .unit{
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 767px){
+    #countdown .number{
+        font-size: 25px;
+    }
+
+    #countdown .unit{
+        font-size: 15px;
+    }
+}
+
 

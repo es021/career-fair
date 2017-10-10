@@ -332,7 +332,7 @@ function timeGetString(unixtimestamp, include_timezone) {
     //console.log(newDate.getTimezoneOffset());
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var toReturn = "";
-    //month start with zero    
+    //month start with zero
     toReturn += months[newDate.getMonth()];
     toReturn += " ";
     toReturn += newDate.getDate();
@@ -522,4 +522,64 @@ function ajaxCheckHasMeta(meta, yesHandler, noHandler, user_id) {
     });
 }
 
+function eventCountdown(id, endTime, size, untilWhat, endMessage) {
+    // Set the date we're counting down to, which is when queue is open
+    //endTime format should be: 'MM/DD/YYY HH:MM AMorPM TIMEZONE'. ex: '10/11/2017 08:0 PM EST'
+    var end = new Date(endTime);
 
+    //change to use jQuery for simplicity
+    var dom = jQuery("#" + id);
+    dom.css("text-align", "center");
+    dom.css("font-size", size);
+
+    var counter = jQuery("<div></div>");
+
+    function getESTOffset() {
+        //add one here to fix time zone offset
+        return new Date().getTimezoneOffset() - (end.getTimezoneOffset()) + 1;
+    }
+
+    function showRemaining() {
+        counter.html("");
+        var now = new Date();
+        var distance = end - now - getESTOffset() * (1000 * 60 * 60);
+        //alert(distance);
+        if (distance < 0) {
+            clearInterval(timer);
+            dom.removeClass("closer");
+            dom.html(endMessage);
+            return;
+        }
+
+        //Less than 5 hours, will use .closer styling
+        if (distance < 17999352) {
+            dom.addClass("closer");
+        }
+
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        counter.append("<span class='number'>" + days + "</span>");
+        counter.append("<span class='unit'>d</span>");
+        counter.append("<span class='number'>" + hours + "</span>");
+        counter.append("<span class='unit'>h</span>");
+        counter.append("<span class='number'>" + minutes + "</span>");
+        counter.append("<span class='unit'>m</span>");
+        counter.append("<span class='number'>" + seconds + "</span>");
+        counter.append("<span class='unit'>s</span>");
+
+
+        if (untilWhat !== "") {
+            counter.append("<br>" +untilWhat);
+        }
+
+        dom.html("");
+        dom.append(counter);
+
+    }
+
+    timer = setInterval(showRemaining, 1000);
+}

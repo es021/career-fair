@@ -467,7 +467,7 @@ if ( is_multisite() ) {
  *
  * @since 3.0.0
  */
-do_action( 'wp_loaded' ); 
+do_action( 'wp_loaded' );
 
-define('CUSTOM_CSS_VERSION','addnexts');
-define('CUSTOM_JS_VERSION','export');
+define('CUSTOM_CSS_VERSION','countdown');
+define('CUSTOM_JS_VERSION','countdown');

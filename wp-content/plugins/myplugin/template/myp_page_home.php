@@ -44,7 +44,7 @@ function getIsBeta($user_id) {
         );
     } else {
         $not_beta_user = array();
-        $not_beta_user = array(22,26, 28, 29);
+        //$not_beta_user = array(22,26, 28, 29);
         //28 -- rec_seeds
         //29 -- rec_seeds2
         //26 -- zulzul@gmail.com
@@ -58,9 +58,9 @@ function getIsBeta($user_id) {
         $beta = false;
     }
 
-    //trial
+    //live
     $est_time = checkESTDateTime();
-    if ($est_time >= '20170930103000' && $est_time <= '20170930133000') {
+    if ($est_time >= '20171011200000') {
         $beta = false;
     }
 

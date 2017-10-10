@@ -1,5 +1,5 @@
 <?php if (!is_user_logged_in()): ?>
-
+    <!--FAIZUL MODIFIED THIS-->
     <div class="home-header-wrap">
         <div class="header-content-wrap">
             <div class="container">
@@ -10,24 +10,27 @@
                     VIRTUAL CAREER FAIR <?= date("Y") ?>
                 </h1>
                 <div class='intro-subtext'>
-                    October 11th - 15th, 2017<br>8 PM - 12 AM EST
+                    <div id = "countdown"></div>
+                    <small>October 11th - 15th, 2017 (8 pm - 12 am EST)</small>    
+                  
+                    <script>
+                        eventCountdown("countdown", '10/11/2017 08:00 PM EST', "x-large", "", "Queue is now open! Goodluck!");
+                    </script>
                 </div>
+                <br>
+                <span style='color:white'>Register Here</span><br>
 
-                <div class="buttons">
-                    <span style='color:white'>Register Here</span><br>
+                <a href="<?= site_url() . "/" . SiteInfo::PAGE_SIGN_UP_STUDENT ?>"
+                   class="btn btn-success custom-button">Student</a>
+                <a href="<?= site_url() . "/" . SiteInfo::PAGE_SIGN_UP_RECRUITER ?>"
+                   class="btn btn-danger custom-button">Recruiter</a>
 
-                    <a href="<?= site_url() . "/" . SiteInfo::PAGE_SIGN_UP_STUDENT ?>" 
-                       class="btn btn-success custom-button">Student</a>
-                    <a href="<?= site_url() . "/" . SiteInfo::PAGE_SIGN_UP_RECRUITER ?>" 
-                       class="btn btn-danger custom-button">Recruiter</a>
-
-                </div>
             </div>
         </div>
         <div class="clear"></div>
     </div>
 <?php endif; ?>
-</header> 
+</header>
 
 <!-- / END HOME SECTION  -->
 
@@ -45,8 +48,8 @@
         </section>
     <?php else: ?>
 
-                        <!--        <section class="focus" id="focus">
-                                </section>-->
+                                        <!--        <section class="focus" id="focus">
+                                                </section>-->
 
         <style>
             .full_width{
@@ -63,7 +66,7 @@
                     <?= generateFixImage(site_url() . "/image/client/EM.png", 200, 200) ?>
                 </div>
                 <div class="col-sm-12">
-                    <h3 class="dark-text gold-text">Gold Sponsor</h3>
+                    <h3 class="dark-text gold-text">Gold Sponsors</h3>
                     <?= generateFixImage(site_url() . "/image/company/exxon_1.png", 200, 200) ?>
                     <?= generateFixImage(site_url() . "/image/company/shell.png", 200, 200) ?>
                     <?= generateFixImage(site_url() . "/image/company/sapura.png", 200, 200) ?>
@@ -78,7 +81,7 @@
                     <br><br>
                 </div>
                 <div class="col-sm-12">
-                    <h3 class="dark-text gold-text">Participating Company</h3>
+                    <h3 class="dark-text gold-text">Participating Companies</h3>
                     <?= generateFixImage(site_url() . "/image/company/tfm.png", 125, 175) ?>
                     <?= generateFixImage(site_url() . "/image/company/aig.png", 125, 175) ?>
                     <?= generateFixImage(site_url() . "/image/company/hotel_eq.png", 125, 250) ?><br>
@@ -102,8 +105,9 @@
                     <?= generateFixImage(site_url() . "/image/client/WCC.png", 150, 150) ?>
                     <?= generateFixImage(site_url() . "/image/client/talent_corp.png", 150, 230) ?><br>
                     <?= generateFixImage(site_url() . "/image/client/COMMS.png", 150, 150) ?>
-                    <?= generateFixImage(site_url() . "/image/client/ICMS.png", 150, 310) ?>  
-                    <?= generateFixImage(site_url() . "/image/client/KULN.png", 150, 150) ?>  
+                    <?= generateFixImage(site_url() . "/image/client/ICMS.png", 150, 310) ?>
+                    <?= generateFixImage(site_url() . "/image/client/KULN.png", 150, 150) ?>
+                    <?= generateFixImage(site_url() . "/image/client/MASCO.png", 150, 150) ?>
                 </div>
 
                 <hr class="line">
