@@ -132,10 +132,11 @@
                     <?= generateFixImage(site_url() . "/image/client/MASCO.png", 150, 150) ?>
                 </div>
 
-                <hr class="line">
-                <h3 class="dark-text">Brought To You By</h3>
-                <div class="col-sm-12 item_fw">
-                    <?= generateFixImage(site_url() . "/image/innovaseed.png", 110, 200) ?>
+                <div class="col-sm-12 full_width item_fw">
+                    <h3 class="dark-text">Brought To You By</h3>
+                    <div class="col-sm-12 item_fw">
+                        <?= generateFixImage(site_url() . "/image/innovaseed.png", 110, 200) ?>
+                    </div>
                 </div>
             </div>
         </div>
