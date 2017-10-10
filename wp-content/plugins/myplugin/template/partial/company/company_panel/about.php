@@ -9,7 +9,7 @@ $res = Company::getCompanyData($data["company_id"], $select);
 $res = myp_formatStringToHTMDeep($res);
 if (!empty($res)) {
     $name = $res[Company::COL_NAME];
-    
+
     if (($res[Company::COL_DESC] !== "")) {
         $desc = $res[Company::COL_DESC];
     }
@@ -20,15 +20,11 @@ if (!empty($res)) {
 }
 ?>
 <br>
-<div class="row text-left">
-    <div class="col-sm-12">
-        <h3>About <?= $name ?></h3>
-        <p class="small_p"><?= $desc ?></p>
-    </div>
+<div class="text-left" style="padding:0 5px;">
+    <h3>About <?= $name ?></h3>
+    <p class="small_p"><?= $desc ?></p>
     <?php if ($more_info != "") { ?>
-        <div class="col-sm-12">
-            <h3>More Information</h3>
-            <p class="small_p"><?= $more_info ?></p>
-        </div>
+        <h3>More Information</h3>
+        <p class="small_p"><?= $more_info ?></p>
     <?php } ?>
 </div>
