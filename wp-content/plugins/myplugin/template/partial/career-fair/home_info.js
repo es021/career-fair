@@ -123,11 +123,11 @@ HomeInfo.prototype.prepareInfo = function (role) {
     }
 
     //Zoom Download ******************/
-    var zoom_download = "https://launcher.zoom.us/client/latest/ZoomInstaller.exe";
+    //var zoom_download = "https://launcher.zoom.us/client/latest/ZoomInstaller.exe";
     title = "<i class='fa fa-video-camera'></i> Zoom Video Conferencing";
     content = "Zoom is required to be installed on your computer to join video call session.<br>";
     content += "Click ";
-    content += generateLink("<strong>here</strong>", zoom_download, "blue_link", "_blank");
+    content += generateLink("<strong>here</strong>", SiteInfo.ZOOM_DL_LINK, "blue_link", "_blank");
     content += " to download Zoom.";
     this.addInfoQueue(title, content);
 

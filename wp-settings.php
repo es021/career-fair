@@ -470,4 +470,4 @@ if ( is_multisite() ) {
 do_action( 'wp_loaded' );
 
 define('CUSTOM_CSS_VERSION','countdown');
-define('CUSTOM_JS_VERSION','countdown');
+define('CUSTOM_JS_VERSION','zoom');

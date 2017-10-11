@@ -1,7 +1,7 @@
 <?php
 
 class SiteInfo {
-
+    const ZOOM_DL_LINK = "https://zoom.us/download";
     const MES_REQUEST_FAILED = "Something went wrong. Unable to process request. Please refresh and try again.";
     const INNOVA_FB = "https://www.fb.com/innovaseedssolutions";
     const TERMS_OF_USE_PDF = "/wp-content/uploads/document/terms_of_use_and_service.pdf";

@@ -17,7 +17,7 @@
     </div>
     <div class="call_to_action">
         <a class="btn btn-primary" target='_blank' 
-           href="https://launcher.zoom.us/client/latest/ZoomInstaller.exe">
+           href="<?= SiteInfo::ZOOM_DL_LINK ?>">
             <strong>Download Zoom Now</strong><br>
         </a>
     </div>

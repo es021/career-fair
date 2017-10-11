@@ -44,6 +44,7 @@ function getIsBeta($user_id) {
         );
     } else {
         $not_beta_user = array();
+        $not_beta_user = array(22);
         //$not_beta_user = array(22,26, 28, 29);
         //28 -- rec_seeds
         //29 -- rec_seeds2
