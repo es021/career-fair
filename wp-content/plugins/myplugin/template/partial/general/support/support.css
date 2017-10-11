@@ -28,8 +28,12 @@
 }
 
 
-#support:active .open{
+#support:hover .open{
     background: #5C9B56;
+}
+
+#support:active .open{
+    background: #5cb85c;
 }
 
 #support .open .hover{
@@ -56,7 +60,6 @@
 
 #support:hover .open .non_hover{
     display: none;
-
 }
 
 #support:hover .open .hover{
@@ -71,3 +74,31 @@
     border: none; 
 }
 
+@media only screen and (min-width: 600px){
+
+    #support,
+    #support .open{
+        border-radius: 35px;
+    }
+
+    #support{
+        width: 150px;
+    }
+
+
+    #support .open .non_hover{
+        display: none;
+
+    }
+
+    #support .open .hover{
+        display: initial;
+
+    }
+
+    #support .open{
+        width: 150px;
+        height: 55px;
+        border: none;
+    }
+}
