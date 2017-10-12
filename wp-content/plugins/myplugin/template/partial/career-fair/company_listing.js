@@ -64,9 +64,15 @@ function CompanyListingJs() {
             cc_name.attr("href", link);
 
             var special_template = getCompanySpecialTemplate(data[Company.COL_TYPE]);
+            console.log(special_template);
             if (special_template !== "") {
                 cc_sponsor_ribbon.removeAttr("hidden");
-                cc_sponsor_ribbon_text.html(special_template + " Sponsor");
+                if (data[Company.COL_TYPE] === Company.TYPE_TEST) {
+                    cc_sponsor_ribbon_text.html(special_template + " Here");
+                    console.log(data);
+                } else {
+                    cc_sponsor_ribbon_text.html(special_template + " Sponsor");
+                }
             } else {
                 cc_sponsor_ribbon.attr("hidden", "hidden");
             }
@@ -89,6 +95,9 @@ function CompanyListingJs() {
     function getCompanySpecialTemplate(type) {
         var special_template = "";
         switch (type) {
+            case "0":
+                special_template = "test";
+                break;
             case "1":
                 special_template = "gold";
                 break;

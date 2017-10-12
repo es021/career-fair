@@ -600,6 +600,29 @@ ul#myp_job_list li span.vacancy{
 /**************************************/
 /* company grid special template ******/
 
+/* TEST ******/
+.test #myp_topleft_ribbon #ribbon_border{
+    border-left: 25px solid #0d395f;
+    border-right: 25px solid #0d395f;
+}
+
+.test #myp_topleft_ribbon #ribbon_box{
+    background-color: #0d395f;  
+}
+
+.test #myp_topleft_ribbon #ribbon_content .text{
+    color: white;
+}
+
+.test .company_card{
+    background: #9ec7ea;
+    border: 1px solid #0d395f;
+}
+
+.test .company_card #myp_card_title a{
+    color:#0d395f;
+}
+
 /* GOLD ******/
 .gold #myp_topleft_ribbon #ribbon_border{
     border-left: 25px solid #ddb30b;

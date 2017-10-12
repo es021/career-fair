@@ -61,7 +61,7 @@ function getIsBeta($user_id) {
 
     //live
     $est_time = checkESTDateTime();
-    if ($est_time >= '20171011200000') {
+    if ($est_time >= '20171011193000') {
         $beta = false;
     }
 

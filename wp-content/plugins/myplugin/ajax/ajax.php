@@ -124,7 +124,7 @@ function getStudentCareerFair($wpdb, $table) {
             , SiteInfo::USERMETA_IMAGE_URL
             , SiteInfo::USERMETA_IMAGE_POSITION
             , SiteInfo::USERMETA_IMAGE_SIZE);
-        $students = Users::get_users(SiteInfo::ROLE_STUDENT, 1, 10, $select, $where);
+        $students = Users::get_users(SiteInfo::ROLE_STUDENT, 1, 99, $select, $where);
 
         $res = array();
         if (!empty($students)) {

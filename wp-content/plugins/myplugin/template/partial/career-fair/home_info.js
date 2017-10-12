@@ -88,7 +88,13 @@ HomeInfo.prototype.setTitle = function (title) {
 HomeInfo.prototype.prepareInfo = function (role) {
     var title;
     var content;
-
+    if (role === SiteInfo.ROLE_STUDENT) {
+        title = "<i class='fa fa-clock-o'></i> Waiting Too Long In Queue?";
+        content = "The company that you are queueing for <b>might not be online</b> or they are <b>engaged with pre-screen students.</b>";
+        content += "<br>While waiting you can setup your profile and drop resumes to all the company.";
+        content += "<br><i>ps: You can see how many recruiters are currently online at the company booth.</i>";
+        this.addInfoQueue(title, content);
+    }
     //Lets Get Started ******************/
     title = "<i class='fa fa-smile-o'></i> Let's Get Started";
     if (role === SiteInfo.ROLE_STUDENT) {
@@ -132,6 +138,7 @@ HomeInfo.prototype.prepareInfo = function (role) {
     this.addInfoQueue(title, content);
 
     if (role === SiteInfo.ROLE_STUDENT) {
+
 
         title = "<i class='fa fa-comments'></i> Be Prepared For Your Session";
         content = "The number in the blue circle in the queuing list is your <strong>queue number</strong>.";

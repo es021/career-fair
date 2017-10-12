@@ -160,6 +160,7 @@ REC_CAREER_FAIR.prototype.getInQueueStudent = function (in_queue_body, cfl_empty
 
             if (res.status === SiteInfo.STATUS_SUCCESS) {
                 var ps = res.data;
+                
 
                 fun.filterShowEmpty(in_queue_body, ps.length, cfl_empty_template);
                 obj.student[InQueue.TABLE_NAME] = [];

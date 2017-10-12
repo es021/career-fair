@@ -41,7 +41,7 @@ class Users {
 // array("ID","first_name");
 //$is_export to export to excel
 //$select_count will return the count for given param
-    public static function get_users($role, $page, $offset = 10, $select = array(), $where = array(), $order_by = array(), $is_export = false, $select_count = false) {
+    public static function get_users($role, $page, $offset = 99, $select = array(), $where = array(), $order_by = array(), $is_export = false, $select_count = false) {
 
         $PUBLIC_USER_KEY = json_decode(self::PUBLIC_USER_KEY);
 
@@ -72,7 +72,7 @@ class Users {
 
             foreach ($PUBLIC_SPECIAL_KEY as $key) {
 
-                //special meta key handling 
+                //special meta key handling
                 if ($key == "rec_company_name") { //get company name for rec
                     $sub_query .= " (SELECT com." . Company::COL_NAME
                             . " FROM wp_cf_usermeta sb, " . Company::TABLE_NAME . " com "
@@ -96,7 +96,7 @@ class Users {
                     $sub_query .= " (SELECT sb.meta_value FROM wp_cf_usermeta sb ";
                     $sub_query .= " WHERE sb.user_id = u.ID and sb.meta_key = '$key') as $key , ";
                 } else if (in_array($key, $PUBLIC_SPECIAL_KEY)) {
-                    
+
                 }
             }
 
@@ -171,7 +171,7 @@ class Users {
 
         global $wpdb;
         $res = $wpdb->get_results($query);
-       
+
         if ($select_count) {
             return $res[0]->count;
         }
@@ -243,7 +243,7 @@ class Users {
             $user_role = wp_get_current_user()->roles[0];
         } else {
 
-// return array("role" => true) 
+// return array("role" => true)
             $user_role = get_usermeta($user_id, SiteInfo::USERMETA_ROLES_ARRAY);
             if (!$user_role) {
                 return false;
@@ -325,7 +325,7 @@ class Users {
         $register = new Register();
         $rec_id = $register->create_rec($data);
 
-        // create new pass_reset data 
+        // create new pass_reset data
         $token = wp_generate_password(30);
         $data = array(
             SiteInfo::FIELD_USER_ID => $rec_id,

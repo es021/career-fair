@@ -15,12 +15,14 @@ class Company {
     const COL_IS_CONFIRMED = "is_confirmed";
     const COL_ACCEPT_PRESCREEN = "accept_prescreen";
     const COL_TYPE = "type";
+    const TYPE_TEST = 0;
     const TYPE_GOLD = 1;
     const TYPE_SILVER = 2;
     const TYPE_BRONZE = 3;
     const TYPE_NORMAL = 4;
 
     public static $TYPE_ARRAY = array(
+        self::TYPE_TEST => "Test",
         self::TYPE_NORMAL => "Normal",
         self::TYPE_GOLD => "Gold Sponsor",
         self::TYPE_SILVER => "Silver Sponsor",
