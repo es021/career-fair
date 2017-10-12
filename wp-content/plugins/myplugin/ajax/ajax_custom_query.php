@@ -255,6 +255,13 @@ function wzs21_customQuery() {
             $res["count"] = $count;
             break;
 
+        //used in session for recruiter
+        case 'get_company_current_total_queue':
+            $company_id = (isset($_POST['company_id'])) ? sanitize_text_field($_POST['company_id']) : null;
+            $count = InQueue::get_count_by_entity(InQueue::COL_COMPANY_ID, $company_id, InQueue::STATUS_QUEUING);
+            $res["count"] = $count;
+            break;
+
         case 'search_pre_screen_by_student_id': //get company
 
             $search_param = (isset($_POST['search_param'])) ? sanitize_text_field($_POST['search_param']) : null;

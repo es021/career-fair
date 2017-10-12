@@ -51,6 +51,29 @@
     color:blue;
 }
 
+/****** REC SESSION QUEUE ***********/
+
+#session_queue{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px #5cb85c solid;
+    background: #a0efa0;
+    border-radius: 15px;
+
+    color:#174c17;
+}
+
+#session_queue .title{
+    font-size:12px;
+    opacity: 0.8;
+}
+#session_queue .val{
+    padding: 10px;
+    font-size:35px;
+    font-weight: bold;
+}
+
 /****** Star Rating ***********/
 .star_rating{
     padding: 5px;

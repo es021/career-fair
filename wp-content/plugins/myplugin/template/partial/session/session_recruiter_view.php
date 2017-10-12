@@ -27,7 +27,8 @@ $student_id = $other_user_id;
 
         <div class="col-sm-3">
             <?php
-            include_once MYP_PARTIAL_PATH . "/session/session_timer.php";
+            //include_once MYP_PARTIAL_PATH . "/session/session_timer.php";
+            include_once MYP_PARTIAL_PATH . "/session/session_recruiter_queue.php";
             include_once MYP_PARTIAL_PATH . "/session/session_operation.php";
             ?>
 
