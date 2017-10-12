@@ -578,12 +578,12 @@ footer#footer {
     }
 }
 
-/*.cfl_item .item_badge:hover .item_badge_details{
+.cfl_item .item_badge:hover .item_badge_details{
     display: initial;
-}*/
+}
 
 .career_fair_list .cfl_body .cfl_item:hover .item_badge_details{
-/*    display: initial;*/
+    display: initial;
 }
 
 /******************************/

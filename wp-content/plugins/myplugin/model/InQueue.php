@@ -16,6 +16,8 @@ class InQueue {
     const ERR_LIMIT_QUEUE = "Limit Queue - " . self::LIMIT_STUDENT_QUEUE;
     const ERR_ALREADY_QUEUE = "Already Queueing For This Company";
     const QUEUE_NUM = "queue_num";
+    
+    const OFFSET_MINUTE_WAIT = 20;
 
     public static function getStatusById($id) {
         global $wpdb;

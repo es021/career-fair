@@ -469,5 +469,5 @@ if ( is_multisite() ) {
  */
 do_action( 'wp_loaded' );
 
-define('CUSTOM_CSS_VERSION','testcttom');
-define('CUSTOM_JS_VERSION','hi');
+define('CUSTOM_CSS_VERSION','day2');
+define('CUSTOM_JS_VERSION','day2');

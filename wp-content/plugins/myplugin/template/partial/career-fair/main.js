@@ -445,7 +445,8 @@ MAIN_CAREER_FAIR.prototype.prepareRow = function (id, title, subtitle, btn_type,
     if (entity_obj.entity === InQueue.TABLE_NAME && mainCF.USER_ROLE === SiteInfo.ROLE_STUDENT) {
         var queue_num = entity_obj[InQueue.QUEUE_NUM];
         var min_to_go = (Number(queue_num) * InQueue.OFFSET_MINUTE_WAIT) - InQueue.OFFSET_MINUTE_WAIT;
-        var offset = 3;
+        
+        var offset = 5; 
 
         var crt_timestamp = Number(entity_obj[InQueue.COL_CREATED_AT]);
         var eta_timestamp = crt_timestamp + (min_to_go + offset) * 60;
