@@ -3,8 +3,30 @@ function MainResumeDropJS() {
 
     var btn_export = jQuery("#btn_export");
 
+
     btn_export.click(function (e) {
         e.preventDefault();
+
+        //check if has feedback
+        ajaxCheckHasMeta(SiteInfo.USERMETA_FEEDBACK, function () {
+            btn_export.removeAttr("disabled");
+            startExport();
+
+        }, function (res) { //no feedback yet
+            btn_export.removeAttr("disabled");
+            var feedback_url = SiteUrl + '/feedback';
+            var title = "Your Feedback Is Very Important To Us";
+            var body = "Please fill in this one time feedback form in order to continue exporting the data.<br><br>";
+            body += "<strong><a id='btn_open_feedback' target='_blank' class='blue_link' href='" + feedback_url + "'>Open Feedback Form</a></strong>";
+            popup.openPopup(title, body);
+
+            popup.dom_content.find("#btn_open_feedback").click(function () {
+                popup.toggle();
+            });
+        });
+    });
+
+    function startExport() {
         var header = [];
         header.push("Student");
         header.push("Resume");
@@ -16,8 +38,7 @@ function MainResumeDropJS() {
         var date = new Date();
         var file_name = "SeedsJobFair_ResumeDrop_" + date.getTime();
         searchPanel.initExportAll(file_name, header);
-    });
-
+    }
 
     var ajax_action = "wzs21_customQuery";
     var query = "search_resume_drop_by_company_id";

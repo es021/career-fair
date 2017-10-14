@@ -65,13 +65,13 @@ if (!isset($user[SiteInfo::USERMETA_CGPA]) ||
 
                 <div id="header_banner"></div>
 
-<?php if (!$rec_view) { ?>
+                <?php if (!$rec_view) { ?>
                     <div id="btn_edit" class="wzs21_top_corner_right">
                         <div title="Edit Profile" class="corner_btn">
                             <i class="fa fa-pencil-square-o fa_list_item"></i>Edit Profile
                         </div> 
                     </div>
-<?php } ?>
+                <?php } ?>
             </div>
             <div id="display_content">
                 <div id ="content_text">
@@ -99,10 +99,12 @@ if (!isset($user[SiteInfo::USERMETA_CGPA]) ||
                             <span class="value"><?= $user[SiteInfo::USERMETA_UNIVERSITY] ?></span></li>
                         <br>
 
-                        <li id="cgpa"><i class='fa fa-book fa_list_item'></i><small>Current CGPA</small><br>
-                            <span class="value"><?= $user[SiteInfo::USERMETA_CGPA] ?></span></li>
-                        <br>
-
+                        <?php if (!($hideCGPA == true)) { ?>
+                            <li id="cgpa"><i class='fa fa-book fa_list_item'></i><small>Current CGPA</small><br>
+                                <span class="value"><?= $user[SiteInfo::USERMETA_CGPA] ?></span></li>
+                            <br>
+                        <?php } ?>
+                            
                         <li id="university"><i class='fa fa-calendar fa_list_item'></i><small>Graduation Date</small><br>
                             <div id="graduation_month_year">
                                 <span class="month"><?= $user[SiteInfo::USERMETA_GRADUATION_MONTH] ?></span>
@@ -130,7 +132,7 @@ if (!isset($user[SiteInfo::USERMETA_CGPA]) ||
                     </ul>
                     <hr class="line">
                     <p id="description">
-<?= myp_formatStringToHTML($user[SiteInfo::USERMETA_DESCRIPTION]) ?>
+                        <?= myp_formatStringToHTML($user[SiteInfo::USERMETA_DESCRIPTION]) ?>
                     </p>
                 </div>
 

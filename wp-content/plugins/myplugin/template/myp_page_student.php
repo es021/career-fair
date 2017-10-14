@@ -32,7 +32,11 @@ if ($user_valid) :
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 sm_no_padding">
-                <?php include_once MYP_PARTIAL_PATH . "/student/myp_partial_display_profile.php"; ?>
+
+                <?php
+                $hideCGPA = true;
+                include_once MYP_PARTIAL_PATH . "/student/myp_partial_display_profile.php";
+                ?>
             </div>
             <div class="col-sm-3"></div>
         </div>

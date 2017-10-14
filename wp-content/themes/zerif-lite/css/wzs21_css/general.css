@@ -673,7 +673,8 @@ footer#footer {
 }
 
 #dashboard .db_item{
-    text-align: justify;
+    text-align: left;
+    word-wrap: break-word;
     padding: 10px;
     border-bottom: 4px solid whitesmoke;
     line-height: 17px;

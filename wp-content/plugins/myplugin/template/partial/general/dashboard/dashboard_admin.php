@@ -5,8 +5,11 @@
 <div class="card container-fluid no_padding">
     <div class="col-sm-6">
         <b>Send Announcement</b><br>
-        <small>** Announcement cannot be edit once sent. 
-            Please read carefully before sending. **</small>
+        <small>** For now, announcement cannot be edit or delete once sent. <br>
+            Please read carefully before sending. ** <br><br>
+            <b>Link Tag:</b><br>
+            &lt;a class="small_link" target="_blank" href="https://seedsjobfair.com/"&gt;Click Here&lt;/a&gt;
+        </small>
         <br><br>
         <div id="dashboard_admin_form" class="text-center wzs21_card_content note_card">
             <div id="loading_note_input" hidden="hidden" class=" text-center">
