@@ -46,6 +46,7 @@ include_once "model/SessionNote.php";
 include_once "model/Users.php";
 include_once "model/Vacancy.php";
 include_once "model/View.php";
+include_once "model/Dashboard.php";
 include_once "model/ZoomAPI.php";
 include_once "model/ZoomMeetings.php";
 

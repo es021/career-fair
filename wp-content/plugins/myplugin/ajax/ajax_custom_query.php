@@ -3,6 +3,38 @@
 add_action('wp_ajax_wzs21_customQuery', 'wzs21_customQuery');
 add_action('wp_ajax_nopriv_wzs21_customQuery', 'wzs21_customQuery');
 
+
+/*
+ * This function created when implementing dashboard feature
+ * Objective, able to fetch only the new based on the latest id the client already has
+ * type of fetch 
+ * -- get new based on latest id (get only id more than given id (init also use this, where id = 0
+ * -- get load more -- normal pagination ?
+ */
+
+//
+//function getPaginationNew($params) {
+//
+//    // get params documentation
+//    //    ["type"]; -- get init, get new or load more,
+//    //    ["latest_id"];
+//    //    ["oldest_id"];
+//    //    ["offset"];
+//    //    ["action"];
+//
+//    $get_params = $params["get_params"];
+//    $custom_params = $params["custom_params"];
+//
+//    $res_data = false;
+//
+//    switch ($get_params["action"]) {
+//        case 'dashboard' :
+//            $res_data = Dashboard::pn_getNewsFeed($get_params, $custom_params);
+//            break;
+//    }
+//
+//    return $res_data;
+//}
 //param $query and optional arguments
 function wzs21_customQuery() {
     global $wpdb;
@@ -11,6 +43,10 @@ function wzs21_customQuery() {
     $res = null;
 
     switch ($query) {
+        case 'get_dashboard_newsfeed':
+            $res = Dashboard::getDashboardNewsfeed($_POST);
+            break;
+
         case 'create_recruiter':
             unset($_POST["action"]);
             unset($_POST["query"]);

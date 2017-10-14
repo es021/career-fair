@@ -26,6 +26,8 @@
         <div class="row">
             <div class="col-sm-3" style="margin-bottom: 25px;">
                 <?php
+                include_once MYP_PARTIAL_PATH . "/general/dashboard/dashboard.php";
+
                 include_once 'partial/student/myp_partial_display_profile.php';
                 include_once 'partial/student/myp_partial_edit_profile.php';
                 ?>

@@ -40,13 +40,12 @@ foreach (json_decode(SiteInfo::USERMETA_REC_KEYS) as $key) {
         }
     }
 }
-
 ?>
 
 <div  class="container-fluid no_padding" style="margin-bottom: 10px;">
     <div class="row">
 
-        <?php if ($beta) { // for coming soon recruiter ?>
+        <?php if ($beta) { // for coming soon recruiter  ?>
 
             <div class="col-sm-3 sm_no_padding">
                 <?php include_once MYP_PARTIAL_PATH . '/recruiter/myp_partial_recruiter_profile.php'; ?>
@@ -61,8 +60,9 @@ foreach (json_decode(SiteInfo::USERMETA_REC_KEYS) as $key) {
 
             </div>
 
-        <?php } else { //for real stuff recruiter   ?>
+        <?php } else { //for real stuff recruiter    ?>
             <div class="col-sm-3 sm_no_padding">
+                <?php include_once MYP_PARTIAL_PATH . "/general/dashboard/dashboard.php"; ?>
                 <?php include_once MYP_PARTIAL_PATH . '/recruiter/myp_partial_recruiter_profile.php'; ?>
                 <br>
             </div>

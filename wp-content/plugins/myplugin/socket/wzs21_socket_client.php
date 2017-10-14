@@ -36,7 +36,7 @@ if (is_user_logged_in()) {
         jQuery(document).ready(function () {
             var socket_data = '<?= json_encode($socket_data) ?>';
             socketData = new SocketData();
-
+            
             try {
                 //init data
                 socket_data = JSON.parse(socket_data);

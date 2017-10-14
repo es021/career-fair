@@ -6,6 +6,7 @@ function myp_global_helper() {
     $session = new ReflectionClass("Session");
     $preScreen = new ReflectionClass("PreScreen");
     $inQueue = new ReflectionClass("InQueue");
+    $dashboard = new ReflectionClass("Dashboard");
     $company = new ReflectionClass("Company");
     $resumeDrop = new ReflectionClass('ResumeDrop');
     $vacancy = new ReflectionClass('Vacancy');
@@ -22,6 +23,7 @@ function myp_global_helper() {
         "Company" => $company->getConstants(),
         "Vacancy" => $vacancy->getConstants(),
         "SiteInfo" => $siteInfo->getConstants(),
+        "Dashboard" => $dashboard->getConstants(),
             /*
               "SiteInfo" => array("STATUS_SUCCESS" => SiteInfo::STATUS_SUCCESS
               , "STATUS_ERROR" => SiteInfo::STATUS_ERROR
@@ -166,6 +168,16 @@ function myp_page_script_footer() {
     $company_page = array('company', 'manage-company');
 
     $scripts = array();
+
+    //All logged in home
+    if (($page == "home" || $page == "admin-panel") && $is_user_logged_in) {
+        //dashboard.js *******/
+        $s = array();
+        $s["handle"] = "dashboard_js";
+        $s["url"] = MYP_PARTIAL_URL . "/general/dashboard/dashboard.js";
+        $s["data"] = array();
+        array_push($scripts, $s);
+    }
 
     // Recruiter Home
     if (($page == "home" && $is_user_logged_in && $user_role == SiteInfo::ROLE_RECRUITER)) {

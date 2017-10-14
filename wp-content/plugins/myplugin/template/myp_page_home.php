@@ -87,7 +87,6 @@ console.log("Tests To Js Console");
 
         $beta = getIsBeta($user_id);
 
-
         if ($user_role == SiteInfo::ROLE_STUDENT) {
             include_once 'myp_page_home_student.php';
         } else if ($user_role == SiteInfo::ROLE_RECRUITER) {

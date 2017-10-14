@@ -260,6 +260,22 @@ function formatHTMLToInputText(text) {
 /*****************************************************************************/
 /********** Time Helper Function **********************************************/
 
+
+function timeIsUnixElapsedHour(unixtimestamp, hour) {
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+
+    var current = new Date();
+    var previous = new Date(unixtimestamp * 1000);
+    var elapsed = current - previous;
+
+    if (elapsed > hour * msPerHour) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function timeGetUnixTimestampNow() {
     var date = new Date();
     return Math.round(date.getTime() / 1000);
@@ -276,6 +292,7 @@ function timeGetAgo(unixtimestamp) {
     var current = new Date();
     var previous = new Date(unixtimestamp * 1000);
     var elapsed = current - previous;
+
 
     if (elapsed < msPerMinute) {
         var sec = Math.round(elapsed / 1000);
@@ -522,6 +539,7 @@ function ajaxCheckHasMeta(meta, yesHandler, noHandler, user_id) {
     });
 }
 
+
 function eventCountdown(id, endTime, size, untilWhat, endMessage) {
     // Set the date we're counting down to, which is when queue is open
     //endTime format should be: 'MM/DD/YYY HH:MM AMorPM TIMEZONE'. ex: '10/11/2017 08:0 PM EST'
@@ -573,7 +591,7 @@ function eventCountdown(id, endTime, size, untilWhat, endMessage) {
 
 
         if (untilWhat !== "") {
-            counter.append("<br>" +untilWhat);
+            counter.append("<br>" + untilWhat);
         }
 
         dom.html("");
