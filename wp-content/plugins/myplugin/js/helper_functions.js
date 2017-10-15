@@ -412,6 +412,23 @@ function timeGetInputFromUnix(unixtimestamp) {
 /********** View Generate START **********************************************/
 
 
+function getSessionStatusString(status) {
+    var ret = "";
+    switch (status) {
+        case Session.STATUS_EXPIRED:
+            ret = "Recruiter Ended";
+            break;
+        case Session.STATUS_LEFT:
+            ret = "Student Left";
+            break;
+        default :
+            ret = status;
+            break;
+    }
+
+    return ret;
+}
+
 function setImageBackground(dom, img_url, img_size, img_pos, imageDefault) {
     if (img_url === null || img_url === "") {
         img_url = imageDefault.img_url;
@@ -440,15 +457,21 @@ function setImageBackground(dom, img_url, img_size, img_pos, imageDefault) {
 }
 
 function generateColumn(row, className) {
+
+    var col = jQuery("<td></td>");
+
     if (row === null || typeof row === "undefined" || row.indexOf("null") > -1) {
-        return "<td></td>";
+        return col;
     }
 
+    var body = "";
     if (typeof className !== "undefined") {
-        row = "<div class='" + className + "'>" + row + "</div>";
+        body = "<div class='" + className + "'>" + row + "</div>";
+    } else {
+        body = row;
     }
 
-    return "<td>" + row + "</td>";
+    return col.html(body);
 }
 
 

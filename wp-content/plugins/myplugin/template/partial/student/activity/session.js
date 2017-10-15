@@ -59,21 +59,5 @@ function StudentActSessionJS() {
         return new_row;
     }
 
-    function getSessionStatusString(status) {
-        var ret = "";
-        switch (status) {
-            case Session.STATUS_ACTIVE:
-                ret = status;
-                break;
-            case Session.STATUS_EXPIRED:
-                ret = "Recruiter Ended";
-                break;
-            case Session.STATUS_LEFT:
-                ret = "You Left";
-                break;
-        }
-
-        return ret;
-    }
 }
 

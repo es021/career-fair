@@ -411,6 +411,10 @@ SearchPanel.prototype.getCurrentKeySearch = function () {
     }
 };
 
+SearchPanel.setQueryData = function (query_data) {
+    this.query_data = query_data;
+};
+
 SearchPanel.prototype.mainSearch = function (search_param, page, is_export) {
     this.initSearch();
 

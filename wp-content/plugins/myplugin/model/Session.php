@@ -24,8 +24,7 @@ class Session {
     const ERR_QUEUE_CANCELED = "Error Queue Canceled";
     const ERR_STUDENT_ACTIVE_SESSION = "Error Student Active Session";
 
-    public static function query_get_company_details_by_student($student_id
-    , $search_param, $page, $offset, $is_export = false, $count = false) {
+    public static function query_get_all_session($status, $page, $offset, $is_export = false, $count = false) {
 
         if ($count) {
             $select = array("COUNT(*) as count");
@@ -51,6 +50,69 @@ class Session {
                 , "CONCAT((" . Users::query_get_meta("s." . self::COL_HOST_ID, SiteInfo::USERMETA_FIRST_NAME) . ")"
                 . ",' ',"
                 . "(" . Users::query_get_meta("s." . self::COL_HOST_ID, SiteInfo::USERMETA_LAST_NAME) . ")"
+                . ") as rec_name"
+                // host email
+                , "(" . Users::query_get("s." . self::COL_HOST_ID, SiteInfo::USERS_EMAIL) . ") as rec_email"
+                // participant name (student)
+                , "CONCAT((" . Users::query_get_meta("s." . self::COL_PARTCPNT_ID, SiteInfo::USERMETA_FIRST_NAME) . ")"
+                . ",' ',"
+                . "(" . Users::query_get_meta("s." . self::COL_PARTCPNT_ID, SiteInfo::USERMETA_LAST_NAME) . ")"
+                . ") as student_name"
+                // host email
+                , "(" . Users::query_get("s." . self::COL_PARTCPNT_ID, SiteInfo::USERS_EMAIL) . ") as student_email"
+            );
+        }
+
+
+        $from = array(self::TABLE_NAME . " s ");
+
+        $status_condition = "(";
+        foreach ($status as $s) {
+            $status_condition .= "'$s',";
+        }
+        $status_condition .= "1)";
+
+        $where = array("s." . self::COL_STATUS . " IN $status_condition");
+
+        $order_by = array("s." . self::COL_STATUS . " ASC"
+            , "s." . self::COL_CREATED_AT . " DESC");
+
+        if (!$is_export && !$count) {
+            $limit = QueryPrepare::get_limit_query($page, $offset);
+        } else {
+            $limit = "";
+        }
+        $sql = QueryPrepare::basic_query($select, $from, $where, $order_by, $limit);
+
+        return $sql;
+    }
+
+    public static function query_get_company_details_by_student($student_id
+    , $search_param, $page, $offset, $is_export = false, $count = false) {
+
+        if ($count) {
+            $select = array("COUNT(*) as count");
+        } else {
+
+            $com_id = "(" . Users::query_get_meta("s." . self::COL_HOST_ID, SiteInfo::USERMETA_REC_COMPANY) . ")";
+            $com_name = "(select c." . Company::COL_NAME . " from " . Company::TABLE_NAME . " c where c." . Company::COL_ID . " = $com_id )";
+
+            $select = array(
+                "s." . self::COL_ID
+                , "s." . self::COL_PARTCPNT_ID
+                , "s." . self::COL_HOST_ID
+                , QueryPrepare::generate_UNIXTIMESTAMP_select("s." . self::COL_CREATED_AT, self::COL_CREATED_AT)
+                , "s." . self::COL_STARTED_AT
+                , "s." . self::COL_ENDED_AT
+                , "s." . self::COL_STATUS
+                //com id
+                , "$com_id as company_id"
+                //com name
+                , "$com_name as company_name"
+                // host name (rec)
+                , "CONCAT((" . Users::query_get_meta("s." . self::COL_HOST_ID, SiteInfo::USERMETA_FIRST_NAME) . ")"
+                . ",' ',"
+                . "(" . Users::query_get_meta("s." . self::COL_HOST_ID, SiteInfo::USERMETA_LAST_NAME) . ")"
                 . ") as rec_name");
         }
 
@@ -59,7 +121,9 @@ class Session {
 
         $where = array("s." . self::COL_PARTCPNT_ID . " = '$student_id'");
 
-        $order_by = array("s." . self::COL_ID . " DESC");
+        $order_by = array(
+            "s." . self::COL_ID . " DESC"
+        );
 
         if (!$is_export && !$count) {
             $limit = QueryPrepare::get_limit_query($page, $offset);
