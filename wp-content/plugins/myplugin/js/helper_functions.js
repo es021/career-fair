@@ -456,22 +456,31 @@ function setImageBackground(dom, img_url, img_size, img_pos, imageDefault) {
     dom.css("background-repeat", "no-repeat");
 }
 
-function generateColumn(row, className) {
+function generateColumn(row, className, isJquery) {
 
     var col = jQuery("<td></td>");
 
     if (row === null || typeof row === "undefined" || row.indexOf("null") > -1) {
-        return col;
+        if (isJquery) {
+            return col;
+        } else {
+            return "<td> </td>";
+        }
     }
 
     var body = "";
-    if (typeof className !== "undefined") {
+    if (typeof className !== "undefined" && className !== null) {
         body = "<div class='" + className + "'>" + row + "</div>";
     } else {
         body = row;
     }
 
-    return col.html(body);
+    if (isJquery) {
+        col.html(body);
+        return col;
+    } else {
+        return "<td>" + body + "</td>";
+    }
 }
 
 

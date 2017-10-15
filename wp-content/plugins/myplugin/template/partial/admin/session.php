@@ -96,8 +96,8 @@
             new_row.append(generateColumn(session));
 
             var status = data[Session.COL_STATUS];
-            
-            var status_col = generateColumn(getSessionStatusString(status));
+
+            var status_col = generateColumn(getSessionStatusString(status), null, true);
 
             if (status === Session.STATUS_ACTIVE) {
                 status_col.css("background", "#5cb85c");
