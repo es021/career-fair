@@ -40,6 +40,7 @@ function MainSessionJS() {
             header.push("CGPA");
             header.push("Major");
             header.push("Minor");
+            header.push("Resume Offline");
             header.push("Resume");
             header.push("LinkedIn");
             header.push("Portfolio");
@@ -128,7 +129,7 @@ function MainSessionJS() {
 
     function generateDataDisplay(index, data, is_export) {
         var clsLimitLine = (!is_export) ? "limit_line" : undefined;
-        
+
         //edit_column_template
         var new_row = jQuery("<tr></tr>");
 
@@ -177,6 +178,9 @@ function MainSessionJS() {
                 , data["resume"]
                 , "small_link", "_blank") + "<br>"
                 : "";
+
+
+
         var linkedin = (data["linkedin"] !== "" && data["linkedin"] !== null) ? generateLink("LinkedIn"
                 , data["linkedin"]
                 , "small_link", "_blank") + "<br>"
@@ -187,6 +191,16 @@ function MainSessionJS() {
                 : "";
 
         if (is_export) {
+
+            var resume_offline = getFileNameFromUrl(data["resume"]);
+            resume_offline = (resume_offline !== "" && resume_offline !== null)
+                    ? generateLink("Resume Offline"
+                            , "resume/" + resume_offline
+                            , "small_link", "_blank") + "<br>"
+                    : "";
+
+            new_row.append(generateColumn(resume_offline));
+
             new_row.append(generateColumn(resume));
             new_row.append(generateColumn(linkedin));
             new_row.append(generateColumn(porfolio));

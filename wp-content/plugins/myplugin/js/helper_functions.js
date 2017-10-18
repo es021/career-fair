@@ -178,6 +178,15 @@ function displayError(message, domForError) {
 /*****************************************************************************/
 /********** DOM Element Helper Function **********************************************/
 
+function getFileNameFromUrl(url) {
+    try {
+        url = url.split("/");
+        var file = url[url.length - 1];
+        return file;
+    } catch (err) {
+        return "";
+    }
+}
 
 function initAllToolTip() {
     jQuery('[data-toggle="tooltip"]').tooltip();

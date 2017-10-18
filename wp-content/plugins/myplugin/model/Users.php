@@ -35,12 +35,12 @@ class Users {
         , "cgpa"
         , "graduation_year"]';
 
-// $where format
-// array("ID = 4', "last_name LIKE 'Zul%' ")
-// $order_by format
-// array("ID","first_name");
-//$is_export to export to excel
-//$select_count will return the count for given param
+    // $where format
+    // array("ID = 4', "last_name LIKE 'Zul%' ")
+    // $order_by format
+    // array("ID","first_name");
+    //$is_export to export to excel
+    //$select_count will return the count for given param
     public static function get_users($role, $page, $offset = 99, $select = array(), $where = array(), $order_by = array(), $is_export = false, $select_count = false) {
 
         $PUBLIC_USER_KEY = json_decode(self::PUBLIC_USER_KEY);
@@ -54,7 +54,7 @@ class Users {
         }
         $sub_query = "";
 
-//default take all
+        //default take all
         if (empty($select)) {
             $sub_query = " SELECT ";
             foreach ($PUBLIC_USER_KEY as $key) {
@@ -81,7 +81,7 @@ class Users {
                 }
             }
         }
-// select by key need to add ID and role
+        // select by key need to add ID and role
         else {
 
             $sub_query = " SELECT u.ID as ID, ";
@@ -96,7 +96,7 @@ class Users {
                     $sub_query .= " (SELECT sb.meta_value FROM wp_cf_usermeta sb ";
                     $sub_query .= " WHERE sb.user_id = u.ID and sb.meta_key = '$key') as $key , ";
                 } else if (in_array($key, $PUBLIC_SPECIAL_KEY)) {
-
+                    
                 }
             }
 
@@ -109,12 +109,12 @@ class Users {
         $sub_query = trim($sub_query, ", ");
         $sub_query .= " FROM wp_cf_users u ";
 
-//prepare role
+        //prepare role
         $role_arr = array($role => true);
         $role = serialize($role_arr);
 
 
-//outer select
+        //outer select
         if ($select_count) {
             $outer_sel = "COUNT(*) as count ";
         } else {
@@ -137,7 +137,7 @@ class Users {
 
         $query .= "WHERE users.wp_cf_capabilities = '$role' AND (";
 
-//prepare extra where
+        //prepare extra where
         if (!empty($where)) {
             foreach ($where as $k => $w) {
                 if ($k > 0) {
@@ -151,7 +151,7 @@ class Users {
 
         $query .= " ) ";
 
-//prepare order by
+        //prepare order by
         if (!empty($order_by)) {
             $query .= " ORDER BY ";
             foreach ($order_by as $or) {
@@ -234,16 +234,16 @@ class Users {
         }
     }
 
-//if user id is null, return current logged user role
+    //if user id is null, return current logged user role
     public static function get_user_role($user_id = null) {
         $user_role = "";
         if (!$user_id) {
 
-// return array(0 => "role")
+            // return array(0 => "role")
             $user_role = wp_get_current_user()->roles[0];
         } else {
 
-// return array("role" => true)
+            // return array("role" => true)
             $user_role = get_usermeta($user_id, SiteInfo::USERMETA_ROLES_ARRAY);
             if (!$user_role) {
                 return false;
@@ -382,6 +382,34 @@ class Users {
     public static function query_get($user_id, $column) {
         $sql = "select u.$column from wp_cf_users u ";
         $sql .= "where u.ID = $user_id";
+        return $sql;
+    }
+
+    public static function query_get_all_feedback($user_role, $page = 1, $offset = 10, $count = false, $is_export = false) {
+        $select = array(
+            "m.meta_value as feedback",
+            "m.user_id as " . SiteInfo::USERS_ID,
+            "(" . self::query_get("m.user_id", SiteInfo::USERS_EMAIL) . ") as " . SiteInfo::USERS_EMAIL
+        );
+
+        $from = array("wp_cf_usermeta m");
+
+
+        if ($user_role == SiteInfo::ROLE_STUDENT) {
+            $where = array(" m.meta_value like '%stu1%' ");
+        } else if ($user_role == SiteInfo::ROLE_RECRUITER) {
+            $where = array(" m.meta_value like '%rec1%' ");
+        }
+
+        array_push($where, " AND m.meta_key = 'feedback' ");
+
+        if (!$is_export && !$count) {
+            $limit = QueryPrepare::get_limit_query($page, $offset);
+        } else {
+            $limit = "";
+        }
+
+        $sql = QueryPrepare::basic_query($select, $from, $where, array(), $limit);
         return $sql;
     }
 

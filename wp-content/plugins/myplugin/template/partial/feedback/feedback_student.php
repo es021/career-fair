@@ -1,4 +1,6 @@
-<?php ?>
+<?php 
+
+?>
 <div class="wzs21_label_form">Why did you join this virtual career fair?</div>
 <textarea name="stu1" id="stu1"
           class="wzs21_input_form" type="text"

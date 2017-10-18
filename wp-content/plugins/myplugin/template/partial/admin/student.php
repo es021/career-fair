@@ -55,6 +55,7 @@
             e.preventDefault();
             var header = [];
             header.push("ID");
+            header.push("Status");
             header.push("Name");
             header.push("Email");
             header.push("Phone");
@@ -63,11 +64,11 @@
             header.push("Major");
             header.push("Minor");
             header.push("Sponsor");
+            header.push("Resume Offline");
             header.push("Resume");
             header.push("Linked In");
             header.push("Portfolio");
             header.push("Graduation Date");
-            header.push("Status");
             header.push("Register At");
 
             var date = new Date();
@@ -198,11 +199,16 @@
                         toAppend += generateColumn("-");
                     }
                 } else {
-                    /*
-                     toAppend += generateColumn("<a href='" + resume + "'>" + resume + "</a>");
-                     toAppend += generateColumn("<a href='" + linkedin + "'>" + linkedin + "</a>");
-                     toAppend += generateColumn("<a href='" + portfolio + "'>" + portfolio + "</a>");
-                     */
+
+                    var resume_offline = getFileNameFromUrl(resume);
+                    resume_offline = (resume_offline !== "" && resume_offline !== null)
+                            ? generateLink("Resume Offline"
+                                    , "resume/" + resume_offline
+                                    , "small_link", "_blank") + "<br>"
+                            : "";
+
+                    toAppend += generateColumn(resume_offline);
+
                     toAppend += generateColumn((resume !== "") ? "<a href='" + resume + "'>Resume</a>" : "");
                     toAppend += generateColumn((linkedin !== "") ? "<a href='" + linkedin + "'>LinkedIn</a>" : "");
                     toAppend += generateColumn((portfolio !== "") ? "<a href='" + portfolio + "'>Portfolio</a>" : "");

@@ -29,6 +29,7 @@ function MainResumeDropJS() {
     function startExport() {
         var header = [];
         header.push("Student");
+        header.push("Resume Offline");
         header.push("Resume");
         header.push("LinkedIn");
         header.push("Portfolio");
@@ -122,10 +123,19 @@ function MainResumeDropJS() {
         new_row.append(generateColumn(student));
 
         //generate links
+
+        var resume_offline = getFileNameFromUrl(data["resume"]);
+        resume_offline = (resume_offline !== "" && resume_offline !== null)
+                ? generateLink("Resume Offline"
+                        , "resume/" + resume_offline
+                        , "small_link", "_blank") + "<br>"
+                : "";
+
         var resume = (data["resume"] !== "" && data["resume"] !== null) ? generateLink("Resume"
                 , data["resume"]
                 , "", "_blank")
                 : "";
+
         var linkedin = (data["linkedin"] !== "" && data["linkedin"] !== null) ? generateLink("LinkedIn"
                 , data["linkedin"]
                 , "", "_blank")
@@ -134,6 +144,8 @@ function MainResumeDropJS() {
                 , data["portfolio"]
                 , "", "_blank")
                 : "";
+
+        new_row.append(generateColumn(resume_offline));
         new_row.append(generateColumn(resume));
         new_row.append(generateColumn(linkedin));
         new_row.append(generateColumn(porfolio));

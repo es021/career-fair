@@ -246,13 +246,37 @@ function wzs21_customQuery() {
             $res["count"] = $count;
             break;
 
+        case 'search_all_feedback':
+            $search_param = (isset($_POST['search_param'])) ? sanitize_text_field($_POST['search_param']) : null;
+            $page = (isset($_POST['page'])) ? sanitize_text_field($_POST['page']) : null;
+            $is_export = (isset($_POST['is_export'])) ? true : false;
+            $user_role = $_POST["data"]["user_role"];
+            $offset = SiteInfo::PAGE_OFFSET_ADMIN_PANEL;
+
+            $sql = Users::query_get_all_feedback($user_role, $page, $offset, $is_export, false);
+            $data_res = $wpdb->get_results($sql);
+            foreach ($data_res as $k => $r) {
+                $data_res[$k] = myp_formatStringToHTMDeep($r, true);
+            }
+
+            if ($page == 1 && count($data_res) < $offset) {
+                $count = count($data_res);
+            } else {
+                $sql = Users::query_get_all_feedback($user_role, $page, $offset, $is_export, true);
+                $count = $wpdb->get_row($sql, ARRAY_A)["count"];
+            }
+
+            $res["data"] = $data_res;
+            $res["count"] = $count;
+            
+            break;
         case 'search_all_sesison' :
             $search_param = (isset($_POST['search_param'])) ? sanitize_text_field($_POST['search_param']) : null;
             $page = (isset($_POST['page'])) ? sanitize_text_field($_POST['page']) : null;
             $is_export = (isset($_POST['is_export'])) ? true : false;
             $status = $_POST["data"]["status"];
             $offset = SiteInfo::PAGE_OFFSET_ADMIN_PANEL;
-           
+
 
             $sql = Session::query_get_all_session($status, $page, $offset, $is_export, false);
             $data_res = $wpdb->get_results($sql);

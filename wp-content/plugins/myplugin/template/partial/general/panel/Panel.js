@@ -9,6 +9,8 @@
  */
 var Panel = function (parent_id, title, tabs, tabs_dir_path, initShow, renderCustomPage, generateCustomTab, data_load_page) {
     this.parent_id = parent_id;
+    
+    console.log(parent_id);
     this.title = title;
     this.tabs = tabs;
     this.tabs_dir_path = tabs_dir_path;
@@ -84,8 +86,12 @@ Panel.prototype.generateTabsDom = function () {
 Panel.prototype.loadTab = function (clicked) {
     this.dom_content.html(this.loader);
 
+
     this.updateCurrentTab(clicked);
     var id = clicked.attr("id");
+    
+    console.log(id);
+    
     var obj = this;
 
     this.dom_current_tab = clicked;

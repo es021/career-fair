@@ -33,6 +33,7 @@ $show = isset($_GET["show"]) ? $_GET["show"] : "student";
     tabs["dataset"] = {icon: "list", label: "Datasets"};
     tabs["monitor"] = {icon: "bar-chart", label: "Monitor"};
     tabs["session"] = {icon: "comments", label: "Sessions"};
+    tabs["feedback_main"] = {icon: "question-circle", label: "Feedback"};
     tabs["dashboard_admin"] = {icon: "commenting-o", label: "Dashboard"};
     var tabs_dir_path = "<?= MYP_PARTIAL_PATH . '/admin/' ?>";
     var initShow = "<?= $show ?>";

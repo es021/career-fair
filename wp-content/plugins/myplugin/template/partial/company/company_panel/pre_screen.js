@@ -29,6 +29,7 @@ function MainPreScreenJS() {
         var header = [];
         //header.push("#");
         header.push("Student");
+        header.push("Resume Offline");
         header.push("Resume");
         header.push("LinkedIn");
         header.push("Portfolio");
@@ -237,6 +238,13 @@ function MainPreScreenJS() {
         if (!is_export) {
             new_row.append(generateColumn(resume + "<br>" + linkedin + "<br>" + porfolio));
         } else {
+            var resume_offline = getFileNameFromUrl(data["resume"]);
+            resume_offline = (resume_offline !== "" && resume_offline !== null)
+                    ? generateLink("Resume Offline"
+                            , "resume/" + resume_offline
+                            , "small_link", "_blank") + "<br>"
+                    : "";
+            new_row.append(generateColumn(resume_offline));
             new_row.append(generateColumn(resume));
             new_row.append(generateColumn(linkedin));
             new_row.append(generateColumn(porfolio));
