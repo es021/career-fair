@@ -385,12 +385,18 @@ class Users {
         return $sql;
     }
 
-    public static function query_get_all_feedback($user_role, $page = 1, $offset = 10, $count = false, $is_export = false) {
-        $select = array(
-            "m.meta_value as feedback",
-            "m.user_id as " . SiteInfo::USERS_ID,
-            "(" . self::query_get("m.user_id", SiteInfo::USERS_EMAIL) . ") as " . SiteInfo::USERS_EMAIL
-        );
+    public static function query_get_all_feedback($user_role, $page = 1, $offset = 10, $is_export = false, $count = false) {
+
+        if ($count) {
+            $select = array("count(*) as count");
+        } else {
+
+            $select = array(
+                "m.meta_value as feedback",
+                "m.user_id as " . SiteInfo::USERS_ID,
+                "(" . self::query_get("m.user_id", SiteInfo::USERS_EMAIL) . ") as " . SiteInfo::USERS_EMAIL
+            );
+        }
 
         $from = array("wp_cf_usermeta m");
 
@@ -410,6 +416,7 @@ class Users {
         }
 
         $sql = QueryPrepare::basic_query($select, $from, $where, array(), $limit);
+
         return $sql;
     }
 

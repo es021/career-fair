@@ -80,10 +80,15 @@ $q["stu6"] = "What kind of support/help would you want to help you prepare?";
                     , SiteUrl + "/student/?id=" + data[SiteInfo.USERS_ID]
                     , "blue_link limit_line", "_blank");
             new_row.append(generateColumn(user));
+            var feedback = [];
+            try {
+                var feedback = JSON.parse(data["feedback"]);
+            } catch (err) {
+                feedback.push(data["feedback"]);
+            }
 
-            var feedback = JSON.parse(data["feedback"]);
             for (var i in feedback) {
-                new_row.append(generateColumn(feedback[i],"limit_line"));
+                new_row.append(generateColumn(feedback[i], "limit_line"));
             }
 
             return new_row;
