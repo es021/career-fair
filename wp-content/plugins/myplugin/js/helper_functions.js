@@ -642,3 +642,35 @@ function eventCountdown(id, endTime, size, untilWhat, endMessage) {
 
     timer = setInterval(showRemaining, 1000);
 }
+
+
+function downloadBashScript(data, company_id, entity) {
+    var t = "#!/bin/bash \n";
+    var dirname = "company_" + company_id + "_" + entity + "_resume";
+    t += "mkdir " + dirname + " \n";
+
+    t += "echo 'Starting to copy..' \n";
+
+    for (var i in data) {
+        var filename = data[i];
+        t += "echo 'Copying " + filename + "' \n";
+        t += "cp './resume/" + filename + "' './" + dirname + "/" + filename + "' \n";
+    }
+
+    t += "echo 'Finished copy all related resume into folder -> " + dirname + "' \n";
+    t += "echo 'Type [exit] to close' \n";
+    t += "$SHELL \n";
+
+    t = encodeURIComponent(t);
+
+    var sh_filename = "copy_" + dirname;
+    var a = document.createElement('a');
+    var uri = 'data:application/vnd.ms-excel,';
+    var href = uri + t;
+
+    a.href = href;
+    a.download = sh_filename + '.sh';
+
+    a.click();
+
+}

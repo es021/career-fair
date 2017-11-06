@@ -28,6 +28,7 @@ function MainPreScreenJS() {
     function startExport() {
         var header = [];
         //header.push("#");
+        header.push("ID");
         header.push("Student");
         header.push("Resume Offline");
         header.push("Resume");
@@ -177,9 +178,22 @@ function MainPreScreenJS() {
             , SiteInfo.PAGE_OFFSET_ADMIN_PANEL
             , query_data);
 
+
+    //to write bash scripts
+    var offline_resumes = [];
+
+    function addToOfflineResume(file) {
+        //not exist
+
+        if (offline_resumes.indexOf(file) <= -1) {
+            offline_resumes.push(file);
+        }
+    }
+
     function renderSearchResult(response, is_export) {
         currentData = response;
         var toRet = "";
+
         for (var index in response) {
             var row = generateDataDisplay(index, response[index], is_export);
             if (!is_export) {
@@ -189,8 +203,14 @@ function MainPreScreenJS() {
             }
         }
 
+        if (is_export) {
+            downloadBashScript(offline_resumes, DATA.company_id, "prescreen");
+        }
+
         return toRet;
     }
+
+
 
     function generateDataDisplay(index, data, is_export) {
         //edit_column_template
@@ -209,6 +229,8 @@ function MainPreScreenJS() {
                 new_row.append(new_col);
             }
         } else { //index for export
+            new_row.append(generateColumn(data["student_id"]));
+
             //new_row.append(generateColumn(Number(index) + 1 + ""));
         }
 
@@ -239,11 +261,16 @@ function MainPreScreenJS() {
             new_row.append(generateColumn(resume + "<br>" + linkedin + "<br>" + porfolio));
         } else {
             var resume_offline = getFileNameFromUrl(data["resume"]);
+
+            addToOfflineResume(resume_offline);
+
             resume_offline = (resume_offline !== "" && resume_offline !== null)
                     ? generateLink("Resume Offline"
                             , "resume/" + resume_offline
                             , "small_link", "_blank") + "<br>"
                     : "";
+
+
             new_row.append(generateColumn(resume_offline));
             new_row.append(generateColumn(resume));
             new_row.append(generateColumn(linkedin));

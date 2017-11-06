@@ -32,6 +32,7 @@ function MainSessionJS() {
         function startExport() {
             var header = [];
             header.push("Session ID");
+            header.push("Student ID");
             header.push("Student");
             header.push("Stars");
             header.push("Comments");
@@ -109,6 +110,17 @@ function MainSessionJS() {
 
     });
 
+    //to write bash scripts
+    var offline_resumes = [];
+
+    function addToOfflineResume(file) {
+        //not exist
+
+        if (offline_resumes.indexOf(file) <= -1) {
+            offline_resumes.push(file);
+        }
+    }
+
     function renderSearchResult(response, is_export) {
         currentData = response;
         var toRet = "";
@@ -119,6 +131,11 @@ function MainSessionJS() {
             } else {
                 toRet += "<tr>" + row.html() + "</tr>";
             }
+        }
+
+
+        if (is_export) {
+            downloadBashScript(offline_resumes, DATA.company_id, "session");
         }
 
         initAllToolTip();
@@ -143,12 +160,18 @@ function MainSessionJS() {
             new_row.append(new_col);
         }
 
-        //student info
+
+
+        //session info
         var session = generateLink("Session " + data[Session.COL_ID]
                 , SiteUrl + "/session/?id=" + data[Session.COL_ID]
                 , "blue_link limit_line", "_blank");
         new_row.append(generateColumn(session));
 
+
+        if (is_export) {
+            new_row.append(generateColumn(data[Session.COL_PARTCPNT_ID]));
+        }
 
         //student info
         var student = generateLink(data["student_name"]
@@ -193,6 +216,7 @@ function MainSessionJS() {
         if (is_export) {
 
             var resume_offline = getFileNameFromUrl(data["resume"]);
+            addToOfflineResume(resume_offline);
             resume_offline = (resume_offline !== "" && resume_offline !== null)
                     ? generateLink("Resume Offline"
                             , "resume/" + resume_offline

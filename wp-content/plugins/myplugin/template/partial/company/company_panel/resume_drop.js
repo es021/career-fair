@@ -28,6 +28,7 @@ function MainResumeDropJS() {
 
     function startExport() {
         var header = [];
+        header.push("ID");
         header.push("Student");
         header.push("Resume Offline");
         header.push("Resume");
@@ -69,6 +70,10 @@ function MainResumeDropJS() {
             }
         }
 
+        if (is_export) {
+            downloadBashScript(offline_resumes, DATA.company_id, "resume_drop");
+        }
+        
         return toRet;
     }
 
@@ -113,8 +118,21 @@ function MainResumeDropJS() {
         return clone;
     }
 
+    //to write bash scripts
+    var offline_resumes = [];
+
+    function addToOfflineResume(file) {
+        //not exist
+
+        if (offline_resumes.indexOf(file) <= -1) {
+            offline_resumes.push(file);
+        }
+    }
+
     function generateDataDisplayExport(data) {
         var new_row = jQuery("<tr></tr>");
+
+        new_row.append(generateColumn(data["student_id"]));
 
         //student info
         var student = generateLink(data["first_name"] + " " + data["last_name"]
@@ -125,6 +143,7 @@ function MainResumeDropJS() {
         //generate links
 
         var resume_offline = getFileNameFromUrl(data["resume"]);
+        addToOfflineResume(resume_offline);
         resume_offline = (resume_offline !== "" && resume_offline !== null)
                 ? generateLink("Resume Offline"
                         , "resume/" + resume_offline
