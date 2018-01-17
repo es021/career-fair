@@ -5,6 +5,7 @@ include_once 'ajax_custom_query.php';
 include_once 'ajax_db.php';
 include_once 'ajax_general.php';
 include_once 'ajax_user.php';
+include_once 'app/ajax_external.php';
 include_once 'ajax_zoom.php';
 
 //**** Ajax Helper ****************************/
