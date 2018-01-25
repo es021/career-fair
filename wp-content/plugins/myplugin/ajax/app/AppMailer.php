@@ -18,7 +18,7 @@ class AppMailer {
 
         add_filter('wp_mail_content_type', 'app_set_html_mail_content_type');
 
-        $apps_name = get_bloginfo("name");
+        $apps_name = "Seeds Job Fair";
         $content = file_get_contents(self::EMAIL_TEMPLATE . "/$type.html");
         $title = "";
 
@@ -40,13 +40,12 @@ class AppMailer {
 
                 //replace constant from template
                 $search = array("{#first_name}", "{#link}");
-                $replace = array($email_data[SiteInfo::USERMETA_FIRST_NAME], $email_data["link"]);
+                $replace = array($email_data["first_name"], $email_data["link"]);
                 $content = str_replace($search, $replace, $content);
                 break;
 
-            case self::NEW_RECRUITER:
+            case self::TYPE_NEW_RECRUITER:
                 $title = "Welcome To $apps_name";
-
                 //replace constant from template
                 $search = array("{#company_name}", "{#app_name}", "{#set_password_link}");
                 $replace = array($email_data["company_name"], $apps_name, $email_data["reset_password_link"]);
@@ -54,9 +53,8 @@ class AppMailer {
                 break;
         }
 
-        //X($to_email);
-        //X($title);
-        //X($content);
+        // add footer
+        $content .= "<br><br>Regards,<br><i>Innovaseeds Solutions</i>";
 
         $ret = wp_mail($to_email, $title, $content);
         remove_filter('wp_mail_content_type', 'app_set_html_mail_content_type');
