@@ -5,6 +5,7 @@ class ZoomMeetings {
     const TABLE_NAME = "zoom_meetings";
     const COL_ID = "ID";
     const COL_SESSION_ID = "session_id";
+    const COL_GROUP_SESSION_ID = "group_session_id";
     const COL_HOST_ID = "host_id";
     const COL_ZOOM_HOST_ID = "zoom_host_id";
     const COL_ZOOM_MEETING_ID = "zoom_meeting_id";
@@ -44,16 +45,19 @@ class ZoomMeetings {
     }
 
     //expected data all column except id and started at
-    public static function createMeeting($host_id, $session_id, $zoom_data) {
+    public static function createMeeting($host_id, $session_id, $group_session_id, $zoom_data) {
         global $wpdb;
 
         $ins = array();
         $ins[self::COL_SESSION_ID] = $session_id;
+        $ins[self::COL_GROUP_SESSION_ID] = $group_session_id;
         $ins[self::COL_HOST_ID] = $host_id;
         $ins[self::COL_ZOOM_HOST_ID] = $zoom_data->host_id;
         $ins[self::COL_ZOOM_MEETING_ID] = $zoom_data->id;
         $ins[self::COL_START_URL] = $zoom_data->start_url;
         $ins[self::COL_JOIN_URL] = $zoom_data->join_url;
+
+        X($ins);
 
         if ($wpdb->insert(self::TABLE_NAME, $ins)) {
             $id = $wpdb->insert_id;

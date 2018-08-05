@@ -56,6 +56,7 @@ function wzs21_zoom_ajax() {
         case "create_meeting":
             $host_id = $_POST["host_id"];
             $session_id = $_POST["session_id"];
+            $group_session_id, = $_POST["group_session_id"];
             $host = get_userdata($host_id);
             $res = array();
 
@@ -80,7 +81,7 @@ function wzs21_zoom_ajax() {
                 $res = $zoom->createAMeeting($zoom_id, $meeting_topic, $meeting_type);
 
                 $result_zoom = json_decode($res);
-                ZoomMeetings::createMeeting($host_id, $session_id, $result_zoom);
+                ZoomMeetings::createMeeting($host_id, $session_id, $group_session_id, $result_zoom);
             }
 
             break;
