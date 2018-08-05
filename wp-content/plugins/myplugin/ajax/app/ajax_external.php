@@ -127,4 +127,13 @@ function app_send_email() {
     app_return_res($resData, $resErr);
 }
 
+
+// add_action('wp_ajax_app_set_password', 'app_set_password');
+// add_action('wp_ajax_nopriv_app_set_password', 'app_set_password');
+// function app_set_password(){
+//     $password = $_POST["data"]["password"];
+//     $user_id = $_POST["data"]["user_id"];
+//     wp_set_password($new_user_pass, $user_id)
+// }
+
 ?>

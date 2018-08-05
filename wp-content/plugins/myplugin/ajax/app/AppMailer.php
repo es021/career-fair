@@ -3,7 +3,6 @@
 define("APP_AJAX_PATH", str_replace("\\", "/", plugin_dir_path(__FILE__)));
 
 class AppMailer {
-
     const TYPE_STUDENT_REGISTRATION = "STUDENT_REGISTRATION";
     const TYPE_RESET_PASSWORD = "RESET_PASSWORD";
     const TYPE_NEW_RECRUITER = "NEW_RECRUITER";
@@ -15,14 +14,14 @@ class AppMailer {
         function app_set_html_mail_content_type() {
             return 'text/html';
         }
-
+ 
         add_filter('wp_mail_content_type', 'app_set_html_mail_content_type');
 
         $apps_name = "Seeds Job Fair";
         $content = file_get_contents(self::EMAIL_TEMPLATE . "/$type.html");
         $title = "";
 
-        //** title and content generation using $user_data ***//
+        //** title and content generation using $email_data ***//
         switch ($type) {
             case self::TYPE_STUDENT_REGISTRATION:
                 $title = "Welcome To $apps_name";
@@ -46,6 +45,7 @@ class AppMailer {
 
             case self::TYPE_NEW_RECRUITER:
                 $title = "Welcome To $apps_name";
+
                 //replace constant from template
                 $search = array("{#company_name}", "{#app_name}", "{#set_password_link}");
                 $replace = array($email_data["company_name"], $apps_name, $email_data["reset_password_link"]);

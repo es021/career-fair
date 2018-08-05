@@ -5,14 +5,8 @@ include_once 'ajax_custom_query.php';
 include_once 'ajax_db.php';
 include_once 'ajax_general.php';
 include_once 'ajax_user.php';
-include_once 'ajax_zoom.php';
 include_once 'app/ajax_external.php';
-
-add_filter( 'allowed_http_origins', 'add_allowed_origins' );
-function add_allowed_origins( $origins ) {
-    $origins[] = 'http://localhost:8080';
-    return $origins;
-}
+include_once 'ajax_zoom.php';
 
 //**** Ajax Helper ****************************/
 function ajax_return($status, $data) {
