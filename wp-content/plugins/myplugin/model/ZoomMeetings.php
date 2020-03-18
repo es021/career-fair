@@ -57,8 +57,6 @@ class ZoomMeetings {
         $ins[self::COL_START_URL] = $zoom_data->start_url;
         $ins[self::COL_JOIN_URL] = $zoom_data->join_url;
 
-        X($ins);
-
         if ($wpdb->insert(self::TABLE_NAME, $ins)) {
             $id = $wpdb->insert_id;
             return $id;

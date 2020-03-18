@@ -3,7 +3,7 @@
 add_action('wp_ajax_wzs21_zoom_ajax', 'wzs21_zoom_ajax');
 add_action('wp_ajax_nopriv_wzs21_zoom_ajax', 'wzs21_zoom_ajax');
 
-function getZoomDetailsl($session_id, $join_url){
+function getZoomDetailsSid($session_id, $join_url){
     if($session_id == "" && $join_url == ""){
         return false;
     }
@@ -12,6 +12,18 @@ function getZoomDetailsl($session_id, $join_url){
     $query = "select * from zoom_meetings where join_url = '$join_url' and session_id = '$session_id'";
     return $wpdb->get_row($query, ARRAY_A);
 }
+
+
+function getZoomDetailsGs($group_session_id, $join_url){
+    if($group_session_id == "" && $join_url == ""){
+        return false;
+    }
+
+    global $wpdb;
+    $query = "select * from zoom_meetings where join_url = '$join_url' and group_session_id = '$group_session_id'";
+    return $wpdb->get_row($query, ARRAY_A);
+}
+
 
 //param $query and optional arguments
 function wzs21_zoom_ajax() {
@@ -22,7 +34,13 @@ function wzs21_zoom_ajax() {
         case "is_meeting_expired":
             //handle call from cf-app
             if(!isset($_POST[ZoomMeetings::COL_ZOOM_MEETING_ID])){
-                $res = getZoomDetailsl($_POST["session_id"],$_POST["join_url"]);
+
+                if(isset($_POST["session_id"])){
+                    $res = getZoomDetailsSid($_POST["session_id"],$_POST["join_url"]);
+
+                }else if(isset($_POST["group_session_id"])){
+                    $res = getZoomDetailsGs($_POST["group_session_id"],$_POST["join_url"]);
+                }
                 
                 if(!$res){
                     $res = "1";
@@ -56,7 +74,7 @@ function wzs21_zoom_ajax() {
         case "create_meeting":
             $host_id = $_POST["host_id"];
             $session_id = $_POST["session_id"];
-            $group_session_id, = $_POST["group_session_id"];
+            $group_session_id = $_POST["group_session_id"];
             $host = get_userdata($host_id);
             $res = array();
 
